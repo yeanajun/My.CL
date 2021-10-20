@@ -70,7 +70,7 @@ input[type = radio]:hover+label{
 
 input[type = radio]:checked+label{
     border:5px solid #3ecac7;
-}
+} 
 
 
 #submitbutton{
