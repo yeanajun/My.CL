@@ -74,6 +74,7 @@ input[type = radio]:checked+label{
 
 
 #submitbutton{
+    border:5px solid #fdb0b0;
     display: flex;
     align-items: center;
     background-color: #fdb0b0;
@@ -83,7 +84,6 @@ input[type = radio]:checked+label{
     color:white;
     text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
     text-align: center;
-    border : 0px;
     justify-content: center;
     padding : 5px;
     width:200px;
@@ -95,5 +95,28 @@ input[type = radio]:checked+label{
 #submitbutton:hover{
     background-color: white;
     border: 5px solid #fdb0b0;
+    vertical-align: middle;
+}
+
+#goreviewbutton{
+    border:5px solid #3ecac7;
+    background-color: #3ecac7;
+    font-family: '어그로';
+    font-weight: bold;
+    font-size: 18px;
+    color:white;
+    text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
+    text-align:center;
+    justify-content: center;
+    padding : 5px;
+    width:200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#goreviewbutton:hover{
+    background-color: white;
+    border: 5px solid #3ecac7;
     vertical-align: middle;
 }
