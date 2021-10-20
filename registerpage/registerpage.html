@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./registerpage.css">
+    <script src="./registerpage.js"></script>
+</head>
+
+<body>
+    <div id="page1">
+        <form action="index.html" method="post" class="registerForm">
+            <img id="logo" alt="" src="../로고.jpg" onclick="location.href='../landingpage/landingpage.html'" />
+            <div id="registertext">회원가입</div>
+            <div class="idForm">
+                <input type="text" class="id" placeholder="ID">
+            </div>
+            <div class="passForm">
+                <input type="password" class="pw" placeholder="PW">
+            </div>
+            <div class="passForm">
+                <input type="passwordcheck" class="pwcheck" placeholder="PW check">
+            </div>
+            <button type="button" class="btn" onclick="button()">
+                회원가입
+            </button>
+            <script>
+                let button = () => {
+                    alert('회원가입버튼클릭')
+                }
+            </script>
+            
+        </form>
+    </div>
+
+</body>
