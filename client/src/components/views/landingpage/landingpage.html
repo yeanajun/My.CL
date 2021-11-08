@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="landingpage.css">
+    <script src="./landingpage.js"></script>
+</head>
+
+<body>
+    <div id="page1">
+        <div id="header">
+            <img id="logo" alt="" src="../로고.jpg" />
+        </div>
+        <div id="auth" style="text-align: end;">
+            <button id = "authbutton" onclick="location.href='../loginpage/loginpage.html'">로그인</button>
+            <button id = "authbutton" onclick="location.href='../registerpage/registerpage.html'">회원가입</button>
+            <button id = "authbutton" onclick="location.href='../mystoragepage/mystoragepage.html'">My Storage</button>
+        </div>
+        <hr size="5px" color="pink">
+        <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
+            <tr style="vertical-align: top">
+                <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
+                    <class id="components">
+                        <div style="margin-top : 10px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">학년</div>
+                        <div id="gradebutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "gbutton1" name = "gbutton" value="gbutton1"/><label for="gbutton1" style="margin-right: 30px;">고등 1학년</label>
+                            <input type="radio" id = "gbutton2" name = "gbutton" value="gbutton2"/><label for="gbutton2" style="margin-right: 30px;">고등 2학년</label>
+                            <input type="radio" id = "gbutton3" name = "gbutton" value="gbutton3"/><label for="gbutton3">고등 3학년</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">과목</div>
+                        <div id="subjectbutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "sbutton1" name = "sbutton" value="sbutton1"/><label for="sbutton1" style="margin-right: 20px; width:50px">국어</label>
+                            <input type="radio" id = "sbutton2" name = "sbutton" value="sbutton2"/><label for="sbutton2" style="margin-right: 20px; width:50px">수학</label>
+                            <input type="radio" id = "sbutton3" name = "sbutton" value="sbutton3"/><label for="sbutton3" style="margin-right: 20px; width:50px">영어</label>
+                            <input type="radio" id = "sbutton4" name = "sbutton" value="sbutton4"/><label for="sbutton4" style="margin-right: 20px; width:50px">과탐</label>
+                            <input type="radio" id = "sbutton5" name = "sbutton" value="sbutton5"/><label for="sbutton5" style="margin-right: 20px; width:50px">사탐</label>
+                            <input type="radio" id = "sbutton6" name = "sbutton" value="sbutton6"/><label for="sbutton6" style = "width:50px">한국사</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">등급</div>
+                        <div id="achievementbutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "abutton1" name = "abutton" value="abutton1"/><label for="abutton1" style="margin-right: 30px;">1-2등급</label>
+                            <input type="radio" id = "abutton2" name = "abutton" value="abutton2"/><label for="abutton2" style="margin-right: 30px;">3-4등급</label>
+                            <input type="radio" id = "abutton3" name = "abutton" value="abutton3"/><label for="abutton3" style="margin-right: 30px;">5-6등급</label>
+                            <input type="radio" id = "abutton4" name = "abutton" value="abutton4"/><label for="abutton4">7-9등급</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">가격</div>
+                        <div id="pricebutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "pbutton1" name = "pbutton" value="pbutton1"/><label for="pbutton1" style="margin-right: 30px;">무료</label>
+                            <input type="radio" id = "pbutton2" name = "pbutton" value="pbutton2"/><label for="pbutton2">유료</label>
+                        </div>
+                    </class>
+
+                </td>
+                <td style="width:50%; text-align: center;">
+                    <class id="components">
+                        <div style="margin-top : 10px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">잡담양</div>
+                        <div id="chatbutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "cbutton1" name = "cbutton" value="cbutton1"/><label for="cbutton1" style="margin-right: 30px;">없음</label>
+                            <input type="radio" id = "cbutton2" name = "cbutton" value="cbutton2"/><label for="cbutton2" style="margin-right: 30px;">적당히</label>
+                            <input type="radio" id = "cbutton3" name = "cbutton" value="cbutton3"/><label for="cbutton3">많음</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">필기양</div>
+                        <div id="notebutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "nbutton1" name = "nbutton" value="nbutton1"/><label for="nbutton1" style="margin-right: 20px; ">없음</label>
+                            <input type="radio" id = "nbutton2" name = "nbutton" value="nbutton2"/><label for="nbutton2" style="margin-right: 20px; ">적당히</label>
+                            <input type="radio" id = "nbutton3" name = "nbutton" value="nbutton6"/><label for="nbutton3">많음</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">진도</div>
+                        <div id="progressbutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "probutton1" name = "probutton" value="probutton1"/><label for="probutton1" style="margin-right: 30px;">천천히</label>
+                            <input type="radio" id = "probutton2" name = "probutton" value="probutton2"/><label for="probutton2" style="margin-right: 30px;">적당히</label>
+                            <input type="radio" id = "probutton3" name = "probutton" value="probutton3"/><label for="probutton3">빠름</label>
+                        </div>
+                    </class>
+
+                    <class id="components">
+                        <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">강의성격</div>
+                        <div id="featuresbutton" style="justify-content: center; display: inline-block;">
+                            <input type="radio" id = "fbutton1" name = "fbutton" value="fbutton1"/><label for="fbutton1" style="margin-right: 30px;">무료</label>
+                            <input type="radio" id = "fbutton2" name = "fbutton" value="fbutton2"/><label for="fbutton2">유료</label>
+                        </div>
+                    </class>
+                </td>
+            </tr>
+        </table>
+
+        <input type='submit'id = "submitbutton" onclick="location.href='../recommendationpage/recommendationpage.html'" value="강의 추천 받기">
+        <div id="goreview" style="text-align: end; margin-right: 10px;">        
+            <button id = "goreviewbutton"  onclick="location.href='../reviewpage/reviewpage.html'">강의 후기 작성하기</button>
+        </div>
+    </div>
+</body>
+
+</html>
