@@ -1,15 +1,17 @@
+{% load static%}
+
 <!DOCTYPE html> 
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="reviewpage.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reviewpage.css' %}">
 </head>
 
 <body>
     <div id="page1">
         <div id="header">
-            <img id="logo" alt="" src="../로고.jpg" />
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
             <div id="reviewheader">후기작성</div>
             <div id="auth" style="text-align: end;">
                 <button id = "authbutton" onclick="location.href='../loginpage/loginpage.html'">로그인</button>
