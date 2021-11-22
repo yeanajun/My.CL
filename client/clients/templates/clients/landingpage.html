@@ -1,20 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html> 
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="landingpage.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/landingpage.css' %}">
 </head>
 
 <body>
     <div id="page1">
         <div id="header">
-            <img id="logo" alt="" src="../로고.jpg" />
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
         </div>
         <div id="auth" style="text-align: end;">
-            <button id = "authbutton" onclick="location.href='../loginpage/loginpage.html'">로그인</button>
-            <button id = "authbutton" onclick="location.href='../registerpage/registerpage.html'">회원가입</button>
-            <button id = "authbutton" onclick="location.href='../mystoragepage/mystoragepage.html'">My Storage</button>
+            <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
+            <a href="{% url 'signup' %}"><input type="button" id="authbutton" value="회원가입"></a>
+            <a href="{% url 'storage' %}"><input type="button" id="authbutton" value="My Storage"></a>
         </div>
         <hr size="5px" color="pink">
         <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
@@ -99,9 +101,9 @@
             </tr>
         </table>
 
-        <input type='submit'id = "submitbutton" onclick="location.href='../recommendationpage/recommendationpage.html'" value="강의 추천 받기">
-        <div id="goreview" style="text-align: end; margin-right: 10px;">        
-            <button id = "goreviewbutton"  onclick="location.href='../reviewpage/reviewpage.html'">강의 후기 작성하기</button>
+        <input type='submit' id = "submitbutton" value="강의 추천 받기">
+        <div id="goreview" style="text-align: end; margin-right: 10px;">   
+            <a href="{% url 'review' %}"><input type="button" id="goreviewbutton" value="강의 후기 작성하기"></a>     
         </div>
     </div>
 </body>
