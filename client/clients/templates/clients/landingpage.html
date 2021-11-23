@@ -14,9 +14,13 @@
             <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
         </div>
         <div id="auth" style="text-align: end;">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
+            <a href="{% url 'storage' %}"><input type="button" id="authbutton" value="{{ user.username }}님 마이페이지"></a>
+            {% else %}
             <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
             <a href="{% url 'signup' %}"><input type="button" id="authbutton" value="회원가입"></a>
-            <a href="{% url 'storage' %}"><input type="button" id="authbutton" value="My Storage"></a>
+            {% endif %}
         </div>
         <hr size="5px" color="pink">
         <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">

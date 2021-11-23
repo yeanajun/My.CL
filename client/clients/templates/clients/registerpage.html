@@ -10,26 +10,26 @@
 
 <body>
     <div id="page1"> 
-        <form action="index.html" method="post" class="registerForm">
+        <form action="{% url 'signup' %}" method="post" class="registerForm">
+            {% csrf_token %}
+            {% include "clients/form_errors.html" %}
             <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
             <div id="registertext">회원가입</div>
             <div class="idForm">
-                <input type="text" class="id" placeholder="ID">
+                <input type="text" class="id" name="username" id="username" placeholder="ID"
+                    value="{{ form.username.value|default_if_none:'' }}">
             </div>
             <div class="passForm">
-                <input type="password" class="pw" placeholder="PW">
+                <input type="password" class="pw" name="password1" id="password1" placeholder="PW"
+                    value="{{ form.password1.value|default_if_none:'' }}">
             </div>
             <div class="passForm">
-                <input type="passwordcheck" class="pwcheck" placeholder="PW check">
+                <input type="password" class="pwcheck" name="password2" id="password2" placeholder="PW check"
+                    value="{{ form.password2.value|default_if_none:'' }}">
             </div>
-            <button type="button" class="btn" onclick="button()">
+            <button type="submit" class="btn">
                 회원가입
             </button>
-            <script>
-                let button = () => {
-                    alert('회원가입버튼클릭')
-                }
-            </script>
             
         </form>
     </div>
