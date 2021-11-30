@@ -11,5 +11,5 @@ urlpatterns = [
     
     path('recommendation/', views.recommendation, name='recommendation'),
     path('review/', views.review, name='review'),
-    
+    path('for_review/', views.for_review, name = 'for_review')
 ]
