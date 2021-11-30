@@ -11,4 +11,5 @@ urlpatterns = [
     
     path('recommendation/', views.recommendation, name='recommendation'),
     path('review/', views.review, name='review'),
+    
 ]
