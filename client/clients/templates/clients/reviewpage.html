@@ -24,6 +24,30 @@
             </div>
             
         <hr size="5px" color="pink">
+
+        <!-- 강의 리스트 -->
+        <table class="table">
+            <thead>
+                <th>강의명</th>
+                <th>선생님</th>
+                <th>과목</th>
+                <th>학년</th>
+                <th>후기 작성</th>
+            </thead>
+            <tbody>
+                {% for l in list %}
+                <tr>
+                    <td><a href="{{ l.link }}">{{l.title}}</a></td>
+                    <td>{{l.teacher}}</td>
+                    <td>{{l.subject}}</td>
+                    <td>{{l.grade}}</td>
+                    <td>
+                        <button>후기 작성</button>
+                    </td>
+                </tr>
+                {% endfor%}
+            </tbody>
+        </table>
         </div>
 
 
