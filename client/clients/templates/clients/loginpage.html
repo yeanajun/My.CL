@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/loginpage.css' %}">
+</head>
+
+<body> 
+    <div id="page1">
+        <form action="{% url 'login' %}" method="post" class="loginForm">
+            {% csrf_token %}
+            {% include "clients/form_errors.html" %}
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
+            <div id="logintext">로그인</div>
+            <div class="idForm">
+                <input type="text" class="id" name="username" id="username" placeholder="ID"
+                    value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+            <div class="passForm">
+                <input type="password" class="pw" name="password" id="password" placeholder="PW"
+                    value="{{ form.password.value|default_if_none:'' }}">
+            </div>
+            <button type="submit" class="btn">
+                로그인
+            </button>
+            <div class="bottomText">
+                아이디가 없으신가요? <a href="{% url 'signup' %}">회원가입</a>
+            </div>
+        </form>
+    </div>
+
+</body>
