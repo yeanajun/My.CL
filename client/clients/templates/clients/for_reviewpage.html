@@ -1,0 +1,80 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reviewpage.css' %}">
+</head>
+
+<body>
+    <div id="page1">
+        <div id="header">
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}" /></a>
+            <div id="reviewheader">후기작성</div>
+            <div id="auth" style="text-align: end;">
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
+                <a href="{% url 'storage' %}"><input type="button" id="authbutton"
+                        value="{{ user.username }}님 마이페이지"></a>
+                {% else %}
+                <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
+                <a href="{% url 'signup' %}"><input type="button" id="authbutton" value="회원가입"></a>
+                {% endif %}
+            </div>
+
+            <hr size="5px" color="pink">
+
+            <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
+                <tr style="vertical-align: top">
+                    <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
+                        <class id="components">
+                            <div style="margin-top : 10px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
+                                잡담양</div>
+                            <div id="chatbutton" style="justify-content: center; display: inline-block;">
+                                <input type="radio" id="cbutton1" name="cbutton" value="cbutton1" /><label
+                                    for="cbutton1" style="margin-right: 30px;">없음</label>
+                                <input type="radio" id="cbutton2" name="cbutton" value="cbutton2" /><label
+                                    for="cbutton2" style="margin-right: 30px;">적당히</label>
+                                <input type="radio" id="cbutton3" name="cbutton" value="cbutton3" /><label
+                                    for="cbutton3">많음</label>
+                            </div>
+                        </class>
+
+                        <class id="components">
+                            <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">필기양
+                            </div>
+                            <div id="notebutton" style="justify-content: center; display: inline-block;">
+                                <input type="radio" id="nbutton1" name="nbutton" value="nbutton1" /><label
+                                    for="nbutton1" style="margin-right: 20px; ">없음</label>
+                                <input type="radio" id="nbutton2" name="nbutton" value="nbutton2" /><label
+                                    for="nbutton2" style="margin-right: 20px; ">적당히</label>
+                                <input type="radio" id="nbutton3" name="nbutton" value="nbutton6" /><label
+                                    for="nbutton3">많음</label>
+                            </div>
+                        </class>
+
+                        <class id="components">
+                            <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">진도
+                            </div>
+                            <div id="progressbutton" style="justify-content: center; display: inline-block;">
+                                <input type="radio" id="probutton1" name="probutton" value="probutton1" /><label
+                                    for="probutton1" style="margin-right: 30px;">천천히</label>
+                                <input type="radio" id="probutton2" name="probutton" value="probutton2" /><label
+                                    for="probutton2" style="margin-right: 30px;">적당히</label>
+                                <input type="radio" id="probutton3" name="probutton" value="probutton3" /><label
+                                    for="probutton3">빠름</label>
+                            </div>
+                        </class>
+                    </td>
+                    <td style="width:50%; text-align: center;">
+
+
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+</body>

@@ -46,6 +46,14 @@ def recommendation(request):
 def review(request):
     client = MyMongoClient()
     ebsi = client.database["data_ebsi"]
+    mega = client.database["data_megastudy"]
+    etoos = client.database["data_etoos"]
 
-    list = ebsi.find()
-    return render(request, 'clients/reviewpage.html', {'list': list})
+    list_ebsi = ebsi.find()
+    list_mega = mega.find()
+    list_etoos = etoos.find()
+
+    return render(request, 'clients/reviewpage.html', {"list_ebsi": list_ebsi, "list_mega" : list_mega , 'list_etoos':list_etoos})
+
+def for_review(request):
+    return render(request, 'clients/for_reviewpage.html')
