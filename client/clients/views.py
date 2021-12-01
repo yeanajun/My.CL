@@ -24,7 +24,6 @@ def main(request):
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
-        print(form)
         if form.is_valid():
             print("success")
             form.save()
@@ -37,8 +36,12 @@ def signup(request):
         form = UserForm()
     return render(request, 'clients/registerpage.html', {'form': form})
 
-def user_storage(request):
-    return render(request, 'clients/mystoragepage.html')
+def user_storage(request, user_id):
+    client = MyMongoClient()
+    user_db = client.database["auth_user"]
+
+    user = user_db.find_one({"id": user_id})
+    return render(request, 'clients/mystoragepage.html', {'user': user})
     
 def recommendation(request):
     return render(request, 'clients/recommendationpage.html')
