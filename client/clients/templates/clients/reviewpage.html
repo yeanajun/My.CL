@@ -16,7 +16,7 @@
             <div id="auth" style="text-align: end;">
                 {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
-                <a href="{% url 'storage' %}"><input type="button" id="authbutton"
+                <a href="{% url 'storage' user_id=user.id %}"><input type="button" id="authbutton"
                         value="{{ user.username }}님 마이페이지"></a>
                 {% else %}
                 <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
