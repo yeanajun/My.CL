@@ -57,3 +57,4 @@ def review(request):
 
 def for_review(request):
     return render(request, 'clients/for_reviewpage.html')
+
