@@ -13,3 +13,13 @@ Django 서버를 실행시킬 수 있다.
 ```
 python manage.py runserver
 ```
+
+## 이외 폴더 설명
+* crawling_code
+<br/>각 강의 사이트별 강의 목록을 크롤링할 때 사용한 코드가 포함되어 있습니다.
+
+* data
+<br/>강의 목록 데이터 및 각 강의 태그 랜덤값을 생성한 코드가 포함되어 있습니다.
+  
+* previous_json_structure
+<br/>데이터베이스 구조 삽질(?) 코드 내용 및 샘플 구조가 포합되어 있습니다.       
