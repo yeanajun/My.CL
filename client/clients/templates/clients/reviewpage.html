@@ -1,6 +1,6 @@
 {% load static%}
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,47 +11,64 @@
 <body>
     <div id="page1">
         <div id="header">
-            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}" /></a>
             <div id="reviewheader">후기작성</div>
             <div id="auth" style="text-align: end;">
                 {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
-                <a href="{% url 'storage' %}"><input type="button" id="authbutton" value="{{ user.username }}님 마이페이지"></a>
+                <a href="{% url 'storage' user_id=user.id %}"><input type="button" id="authbutton"
+                        value="{{ user.username }}님 마이페이지"></a>
                 {% else %}
                 <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
                 <a href="{% url 'signup' %}"><input type="button" id="authbutton" value="회원가입"></a>
                 {% endif %}
             </div>
-            
-        <hr size="5px" color="pink">
-
-        <!-- 강의 리스트 -->
-        <table class="table">
-            <thead>
-                <th>강의명</th>
-                <th>선생님</th>
-                <th>과목</th>
-                <th>학년</th>
-                <th>후기 작성</th>
-            </thead>
-            <tbody>
-                {% for l in list %}
-                <tr>
-                    <td><a href="{{ l.link }}">{{l.title}}</a></td>
-                    <td>{{l.teacher}}</td>
-                    <td>{{l.subject}}</td>
-                    <td>{{l.grade}}</td>
-                    <td>
-                        <button>후기 작성</button>
-                    </td>
-                </tr>
-                {% endfor%}
-            </tbody>
-        </table>
         </div>
 
 
+        <select name = "site" id = "site">
+            <option>강의 사이트를 선택해주세요</option>
+            <option value = "ebsi"> EBSi</option>
+            <option value = "mega"> 메가스터디</option>
+            <option value= "etoos"> 이투스</option>
+        </select>
+
+        <select id = "subject">
+            <option value = "korean">국어</option>
+            <option value = "math">수학</option>
+            <option value = "english">영어</option>
+            <option value = "science">과탐</option>
+            <option value = "social">사탐</option>
+            <option value = "history">한국사</option>
+        </select>
+
+        <select id = "grade">
+            <option value = "1">고등 1학년</option>
+            <option value = "2">고등 2학년</option>
+            <option value = "3">고등 3학년 / N수</option>
+        </select>
+
+        <div>
+            <input type = "text" placeholder = "과목명을 입력하세요">
+            <button>검색</button>
+        </div>
+
+        <script type = "text/javascript">
+            var lebsi = "{{list_ebsi}}"
+
+            var si = document.getElementById("site");
+            var site = si.options[si.selectedIndex].value;
+
+            var li_ebsi = JSON.parse(lebsi);
+            for(var ebs in lebsi) {
+                console.log(li_ebsi['title']);
+            }
+        </script>
 
 
+
+
+
+              
     </div>
 </body>

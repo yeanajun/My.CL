@@ -24,7 +24,6 @@ def main(request):
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
-        print(form)
         if form.is_valid():
             print("success")
             form.save()
@@ -37,8 +36,12 @@ def signup(request):
         form = UserForm()
     return render(request, 'clients/registerpage.html', {'form': form})
 
-def user_storage(request):
-    return render(request, 'clients/mystoragepage.html')
+def user_storage(request, user_id):
+    client = MyMongoClient()
+    user_db = client.database["auth_user"]
+
+    user = user_db.find_one({"id": user_id})
+    return render(request, 'clients/mystoragepage.html', {'user': user})
     
 def recommendation(request):
     return render(request, 'clients/recommendationpage.html')
@@ -46,6 +49,15 @@ def recommendation(request):
 def review(request):
     client = MyMongoClient()
     ebsi = client.database["data_ebsi"]
+    mega = client.database["data_megastudy"]
+    etoos = client.database["data_etoos"]
 
-    list = ebsi.find()
-    return render(request, 'clients/reviewpage.html', {'list': list})
+    list_ebsi = ebsi.find()
+    list_mega = mega.find()
+    list_etoos = etoos.find()
+
+    return render(request, 'clients/reviewpage.html', {"list_ebsi": list_ebsi, "list_mega" : list_mega , 'list_etoos':list_etoos})
+
+def for_review(request):
+    return render(request, 'clients/for_reviewpage.html')
+
