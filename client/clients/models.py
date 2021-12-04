@@ -31,3 +31,4 @@ class Recommendation_log(models.Model):
     # rec_lecture = models.ArrayField(
     #     models.CharField(max_length=20), null=True
     # )
+

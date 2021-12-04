@@ -6,7 +6,6 @@ from pymongo import MongoClient
 import os, json
 from pathlib import Path
 
-from bson import json_util
 
 
 class MyMongoClient():
@@ -56,20 +55,26 @@ def review(request):
     etoos = client.database["data_etoos"]
 
 
+    site_text = request.GET.get('site')
 
-    list_ebsi = ebsi.find()
-    list_mega = mega.find()
-    list_etoos = etoos.find()
+    search_key = request.GET.get('search_key')
+
+    post_list = {}
+
+
+    if(site_text=="ebsi") :
+        if search_key :
+            post_list = ebsi.find({'title':{'$regex':search_key}})
+            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
 
     
-    return render(request, 'clients/reviewpage.html', {'list_ebsi': list_ebsi, 'list_mega' : list_mega , 'list_etoos':list_etoos})
+    
+    return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+
+
+
+
 
 def for_review(request):
     return render(request, 'clients/for_reviewpage.html')
 
-def combo_review(request):
-    site_text = request.GET.get('site')
-    context = {
-        'site_text' : site_text
-    }
-    return render(request, 'clients/reviewpage.html', context)
