@@ -67,3 +67,9 @@ def review(request):
 def for_review(request):
     return render(request, 'clients/for_reviewpage.html')
 
+def combo_review(request):
+    site_text = request.GET.get('site')
+    context = {
+        'site_text' : site_text
+    }
+    return render(request, 'clients/reviewpage.html', context)
