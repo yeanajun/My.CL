@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <head>
     <meta charset="utf-8" />
@@ -25,13 +26,25 @@
             </div>
         </div>
 
+        <form method="get" action="" class="form">
+            <select name="site" id="id_site">
+                <option>강의 사이트를 선택해주세요</option>
+                <option value="ebsi"> EBSi</option>
+                <option value="mega"> 메가스터디</option>
+                <option value="etoos"> 이투스</option>
+            </select>
+        </form>
 
-        <select name="site" id="site" onchange="selectBox(this.value)">
-            <option>강의 사이트를 선택해주세요</option>
-            <option value="ebsi"> EBSi</option>
-            <option value="mega"> 메가스터디</option>
-            <option value="etoos"> 이투스</option>
-        </select>
+        <script>
+            $(document).ready(function() {
+                $( "select[name=site]" ).val( "{{ site_text }}" );
+                $('select[name=site]').change(function () {
+                console.log($('select[name=site]').val());
+                site = $('select[name=site]').val();
+                $('.form').submit();
+            });
+        });
+        </script>
 
         <div>
             <input type="text" placeholder="과목명을 입력하세요">
