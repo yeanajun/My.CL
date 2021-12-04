@@ -27,4 +27,7 @@ class Category_log(models.Model):
 class Recommendation_log(models.Model):
     _id = models.ObjectIdField()
     user_id = models.IntegerField(null=True)
-    
+
+    # rec_lecture = models.ArrayField(
+    #     models.CharField(max_length=20), null=True
+    # )
