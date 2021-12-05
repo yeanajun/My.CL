@@ -24,19 +24,19 @@ class CategoryLog(models.Model):
     user_id = models.IntegerField(blank=True)
     add_date = models.DateTimeField(auto_now_add=True)
     
-    category = models.ArrayField(
-        model_container=Category
-    )
+#     category = models.ArrayField(
+#         model_container=Category
+#     )
     
-    objects = models.DjongoManager()
+#     objects = models.DjongoManager()
 
-class RecommendationLog(models.Model):
-    _id = models.ObjectIdField()
-    user_id = models.IntegerField(blank=True)
-    add_date = models.DateTimeField(auto_now_add=True)
+# class RecommendationLog(models.Model):
+#     _id = models.ObjectIdField()
+#     user_id = models.IntegerField(blank=True)
+#     add_date = models.DateTimeField(auto_now_add=True)
 
-    rec_lecture = models.ArrayField(
-        model_container=Recommendation
-    )
+#     rec_lecture = models.ArrayField(
+#         model_container=Recommendation
+#     )
 
-    objects = models.DjongoManager()
+#     objects = models.DjongoManager()

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from clients.forms import UserForm, CategoryLogForm
+# from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
 from django.views.decorators.csrf import csrf_exempt
