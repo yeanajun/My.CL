@@ -32,7 +32,7 @@ python manage.py runserver
 <br/>강의 목록 데이터 및 각 강의 태그 랜덤값을 생성한 코드가 포함되어 있습니다.
   
 * previous_json_structure
-<br/>데이터베이스 구조 코드 내용 및 샘플 구조가 포어 있습니다.       
+<br/>데이터베이스 구조 beta 코드 내용 및 샘플 구조가 포함되어 있습니다.      
 
 * rec_algorithm
 <br/>후기 작성 시 카테고리 count 증가 및 추천 알고리즘 파이썬 코드가 포함되어 있습니다. 
