@@ -78,6 +78,16 @@ def review(request):
             post_list = ebsi.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
             print(post_list)
             return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+    elif(site_text=="mega") :
+        if search_key :
+            post_list = mega.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            print(post_list)
+            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+    elif(site_text=="etoos") :
+        if search_key :
+            post_list = etoos.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            print(post_list)
+            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})            
 
     
     
