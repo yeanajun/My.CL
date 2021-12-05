@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
+from django.views.decorators.csrf import csrf_exempt
+
 import os, json
 from pathlib import Path
 
@@ -56,6 +58,8 @@ def user_storage(request, user_id):
 def recommendation(request):
     return render(request, 'clients/recommendationpage.html')
 
+
+@csrf_exempt
 def review(request):
     client = MyMongoClient()
     ebsi = client.database["data_ebsi"]
@@ -63,16 +67,16 @@ def review(request):
     etoos = client.database["data_etoos"]
 
 
-    site_text = request.GET.get('site')
+    site_text = request.POST.get('site')
 
-    search_key = request.GET.get('search_key')
+    search_key = request.POST.get('search_key')
 
     post_list = {}
 
 
     if(site_text=="ebsi") :
         if search_key :
-            post_list = ebsi.find({'title':{'$regex':search_key}})
+            post_list = ebsi.find({'title':{'$regex':search_key}}|{'title':search_key})
             return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
 
     
