@@ -12,9 +12,6 @@ class Category(models.Model):
     class Meta:
         abstract = True
 
-    def __init__(self):
-        return self.grade
-
 class Recommendation(models.Model):
     lecture_id = models.CharField(max_length=20)
     lecture_name = models.CharField(max_length=100)

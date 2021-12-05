@@ -23,14 +23,14 @@ class MyMongoClient():
         self.database = self.client["lecture"]
 
 def main(request):
-    # if request.method == "POST":
-    #     form  = CategoryLogForm(request.POST)
-    #     print(form)
-    #     if form.is_valid():
+    if request.method == "POST":
+        form  = CategoryLogForm(request.POST)
+        print(form)
+        if form.is_valid():
             
-    #         form.save()
+            form.save()
 
-    #     return render(request, 'clients/recommendationpage.html')
+        return render(request, 'clients/recommendationpage.html')
     return render(request, 'clients/landingpage.html')
 
 def signup(request):
