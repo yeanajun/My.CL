@@ -25,10 +25,9 @@ class MyMongoClient():
 def main(request):
     if request.method == "POST":
         form  = CategoryLogForm(request.POST)
-        print(form)
+        
         if form.is_valid():
-            
-            form.save()
+            form.save(commit=False)
 
         return render(request, 'clients/recommendationpage.html')
     return render(request, 'clients/landingpage.html')
