@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Category_log
+from .models import CategoryLog
 
 
 class UserForm(UserCreationForm):
@@ -10,8 +10,7 @@ class UserForm(UserCreationForm):
         fields = ['username', 'password1', 'password2']
 
 
-class LogForm(forms.ModelForm):
+class CategoryLogForm(forms.ModelForm):
     class Meta:
-        model = Category_log
+        model = CategoryLog
         fields = '__all__'
-

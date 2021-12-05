@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from clients.forms import UserForm
+from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
 import os, json
@@ -21,13 +21,21 @@ class MyMongoClient():
         self.database = self.client["lecture"]
 
 def main(request):
+    # if request.method == "POST":
+    #     form  = CategoryLogForm(request.POST)
+    #     print(form)
+    #     if form.is_valid():
+            
+    #         form.save()
+
+    #     return render(request, 'clients/recommendationpage.html')
     return render(request, 'clients/landingpage.html')
 
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
+        print(form)
         if form.is_valid():
-            print("success")
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
