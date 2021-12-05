@@ -22,14 +22,15 @@
                 <a href="{% url 'login' %}"><input type="button" id="authbutton" value="로그인"></a>
                 <a href="{% url 'signup' %}"><input type="button" id="authbutton" value="회원가입"></a>
                 {% endif %}
+                <hr size="5px" color="pink">
             </div>
         </div>
-        <hr size="5px" color="pink">
+
 
         <div id="select_lecture">
             <div style="margin-bottom: 5px; font-size: 25px; font-weight: bolder;">수강한 강의를 입력하세요.</div>
 
-            <form action="{% url 'review' %}" method='POST' id="check_lecture"> {% csrf_token %}
+            <form action="{% url 'review' %}" method='POST' > {% csrf_token %}
                 <select name="site" id="id_site">
                     <option value="ebsi"> EBSi</option>
                     <option value="mega"> 메가스터디</option>
@@ -39,18 +40,19 @@
                 <span class="input-group-btn">
                     <input class="btn btn-default" type="submit" value="Search">
                 </span>
-
+    
             </form>
+    
+
+    
         </div>
-
-
-
-
+        
         <div id="list_search">
             {% for post in post_list %}
-            <td>{{post.title}}</td>>
+            <td>{{post.title}}</td>
             {% endfor %}
         </div>
+
 
 
 
