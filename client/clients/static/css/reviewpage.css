@@ -47,9 +47,6 @@ body{
     text-shadow: 1px 1px 1px #000;
 }
 
-table, td{
-    text-align: center;
-}
 
 #select_lecture{
     font-family: '어그로';
@@ -58,45 +55,7 @@ table, td{
     margin-top: 10px;
 }
 
-#check_lecture{
-    margin: top 20px;
-    font-family: '어그로';
-    font-weight: bold;
-    font-size: larger;
-}
 
-#components{
-    font-family: '어그로';
-    font-weight: bold;
-}
-
-input[type=radio]{
-    display: none;
-    margin:10px;
-}  
-
-input[type = radio]:empty+label{
-    border: 5px solid #fdb0b0;
-    width: 100px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    float: left;
-    border-radius: 12px;
-    justify-content: center;
-    background-color: white;
-    font-family: '어그로';
-    font-weight: bold;
-    
-}
-
-input[type = radio]:hover+label{
-    border:5px solid #3ecac7;
-}
-
-input[type = radio]:checked+label{
-    border:5px solid #3ecac7;
-} 
 
 
 #submitbutton{
@@ -121,28 +80,5 @@ input[type = radio]:checked+label{
 #submitbutton:hover{
     background-color: white;
     border: 5px solid #fdb0b0;
-    vertical-align: middle;
-}
-
-#goreviewbutton{
-    border:5px solid #3ecac7;
-    background-color: #3ecac7;
-    font-family: '어그로';
-    font-weight: bold;
-    font-size: 18px;
-    color:white;
-    text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
-    text-align:center;
-    justify-content: center;
-    padding : 5px;
-    width:200px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#goreviewbutton:hover{
-    background-color: white;
-    border: 5px solid #3ecac7;
     vertical-align: middle;
 }

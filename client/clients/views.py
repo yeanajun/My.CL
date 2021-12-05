@@ -76,7 +76,8 @@ def review(request):
 
     if(site_text=="ebsi") :
         if search_key :
-            post_list = ebsi.find({'title':{'$regex':search_key}}|{'title':search_key})
+            post_list = ebsi.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            print(post_list)
             return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
 
     
