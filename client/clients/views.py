@@ -25,9 +25,11 @@ class MyMongoClient():
 def main(request):
     if request.method == "POST":
         form  = CategoryLogForm(request.POST)
-        
+
         if form.is_valid():
-            form.save(commit=False)
+            form = form.save(commit=False)
+            form.user_id = request.user.id
+            form.save()
 
         return render(request, 'clients/recommendationpage.html')
     return render(request, 'clients/landingpage.html')
@@ -55,6 +57,7 @@ def user_storage(request, user_id):
     return render(request, 'clients/mystoragepage.html', {'user': user})
     
 def recommendation(request):
+    # key = Model.object.latest('')
     return render(request, 'clients/recommendationpage.html')
 
 
