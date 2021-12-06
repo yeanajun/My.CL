@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login
 from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
+import json
+
 from django.views.decorators.csrf import csrf_exempt
 
 import os, json
@@ -74,37 +76,59 @@ def review(request):
 
     search_key = request.POST.get('search_key')
 
-    post_list = {}
+    post_lec = {}
 
 
     if(site_text=="ebsi") :
         if search_key :
-            post_list = ebsi.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
-            print(post_list)
-            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+            post_lec = ebsi.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
+
     elif(site_text=="mega") :
         if search_key :
-            post_list = mega.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
-            print(post_list)
-            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+            post_lec = mega.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
+
     elif(site_text=="etoos") :
         if search_key :
-            post_list = etoos.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
-            print(post_list)
-            return render(request, 'clients/reviewpage.html', {'post_list' : post_list})            
+            post_lec = etoos.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
+            return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})            
 
     
 
 
     
-    return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
+    return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
 
 
 
 def for_review(request):
+    client = MyMongoClient()
+    ebsi = client.database["data_ebsi"]
+    mega = client.database["data_megastudy"]
+    etoos = client.database["data_etoos"]
 
-    lecture = request.POST.get('lecture_select')
-    print(lecture)
+    lecture_title = request.POST.get('lecture_select')
 
-    return render(request, 'clients/for_reviewpage.html',lecture)
+    EBS = ebsi.find()
+    MEGA = mega.find()
+    ETO = etoos.find()
+
+    lecture = {}
+
+    
+    for lec in EBS :
+        if(lec.get("title") == lecture_title):
+            lecture = lec
+    for lec in MEGA :
+        if(lec.get("title") == lecture_title):
+            lecture = lec
+    for lec in ETO :
+        if(lec.get("title") == lecture_title):
+            lecture = lec
+
+
+
+
+    return render(request, 'clients/for_reviewpage.html', {'lecture' : lecture})
 

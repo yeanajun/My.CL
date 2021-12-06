@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/reviewpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/for_reviewpage.css' %}">
 </head>
 
 <body>
@@ -26,13 +26,15 @@
 
             <hr size="5px" color="pink">
 
+       
+            <div>
+                <a href="{{ lecture.link }}">{{ lecture.title }} 후기 작성하기</a>
+            </div>
+
             <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
                 <tr style="vertical-align: top">
                     <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
                         
-                        
-    
-    
                         <class id="components">
                             <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">등급
                             </div>
@@ -96,5 +98,6 @@
                     </td>
                 </tr>
             </table>
+
         </div>
 </body>
