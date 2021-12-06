@@ -12,8 +12,8 @@ class CategoryLog(models.Model):
     user_id = models.IntegerField(blank=True)
     add_date = models.DateTimeField(auto_now_add=True)
     
-    grade = models.CharField(blank=True, max_length=20)
-    subject = models.CharField(blank=True, max_length=20)
+    grade = models.CharField(max_length=20)
+    subject = models.CharField(max_length=20)
     achievement = models.CharField(blank=True, max_length=20)
     site = models.CharField(blank=True, max_length=20)
     tag_jobdam = models.CharField(blank=True, max_length=20)

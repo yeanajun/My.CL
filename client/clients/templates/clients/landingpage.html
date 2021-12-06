@@ -27,6 +27,13 @@
 
         <form action="{% url 'main' %}" method="post">
             {% csrf_token %}
+            {% if messages %}
+            {% for message in messages %}
+            <script>
+                alert('{{message}}')
+            </script>
+            {% endfor %}
+            {% endif %}
             <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
                 <tr style="vertical-align: top">
                     <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
@@ -38,8 +45,7 @@
                                     style="margin-right: 30px;">고등 1학년</label>
                                 <input type="radio" id="gbutton2" name="grade" value="grade2" /><label for="gbutton2"
                                     style="margin-right: 30px;">고등 2학년</label>
-                                <input type="radio" id="gbutton3" name="grade" value="grade3" /><label
-                                    for="gbutton3">고등
+                                <input type="radio" id="gbutton3" name="grade" value="grade3" /><label for="gbutton3">고등
                                     3학년</label>
                             </div>
                         </class>
@@ -85,10 +91,10 @@
                             <div id="pricebutton" style="justify-content: center; display: inline-block;">
                                 <input type="radio" id="pbutton1" name="site" value="ebsi" /><label for="pbutton1"
                                     style="margin-right: 30px;">EBSi</label>
-                                <input type="radio" id="pbutton2" name="site" value="megastudy" /><label
-                                    for="pbutton2" style="margin-right: 30px;">메가스터디</label>
-                                <input type="radio" id="pbutton2" name="site" value="etoos" /><label
-                                    for="pbutton2">이투스</label>
+                                <input type="radio" id="pbutton2" name="site" value="megastudy" /><label for="pbutton2"
+                                    style="margin-right: 30px;">메가스터디</label>
+                                <input type="radio" id="pbutton3" name="site" value="etoos" /><label
+                                    for="pbutton3">이투스</label>
                             </div>
                         </class>
 
@@ -99,8 +105,8 @@
                                 잡담양
                             </div>
                             <div id="chatbutton" style="justify-content: center; display: inline-block;">
-                                <input type="radio" id="cbutton1" name="tag_jobdam" value="low" /><label
-                                    for="cbutton1" style="margin-right: 30px;">없음</label>
+                                <input type="radio" id="cbutton1" name="tag_jobdam" value="low" /><label for="cbutton1"
+                                    style="margin-right: 30px;">없음</label>
                                 <input type="radio" id="cbutton2" name="tag_jobdam" value="medium" /><label
                                     for="cbutton2" style="margin-right: 30px;">적당히</label>
                                 <input type="radio" id="cbutton3" name="tag_jobdam" value="high" /><label
@@ -112,8 +118,8 @@
                             <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">필기양
                             </div>
                             <div id="notebutton" style="justify-content: center; display: inline-block;">
-                                <input type="radio" id="nbutton1" name="tag_pilgi" value="low" /><label
-                                    for="nbutton1" style="margin-right: 20px; ">없음</label>
+                                <input type="radio" id="nbutton1" name="tag_pilgi" value="low" /><label for="nbutton1"
+                                    style="margin-right: 20px; ">없음</label>
                                 <input type="radio" id="nbutton2" name="tag_pilgi" value="medium" /><label
                                     for="nbutton2" style="margin-right: 20px; ">적당히</label>
                                 <input type="radio" id="nbutton3" name="tag_pilgi" value="high" /><label

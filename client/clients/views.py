@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages 
 from django.contrib.auth import authenticate, login
 from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
@@ -25,19 +26,19 @@ class MyMongoClient():
 def main(request):
     if request.method == "POST":
         form  = CategoryLogForm(request.POST)
-
         if form.is_valid():
             form = form.save(commit=False)
             form.user_id = request.user.id
             form.save()
-
-        return render(request, 'clients/recommendationpage.html')
+            return render(request, 'clients/recommendationpage.html')
+        
+        else:
+            messages.error(request, "학년과 과목은 필수선택항목입니다.")
     return render(request, 'clients/landingpage.html')
 
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
