@@ -93,13 +93,17 @@ def review(request):
             return render(request, 'clients/reviewpage.html', {'post_list' : post_list})            
 
     
+
+
     
     return render(request, 'clients/reviewpage.html', {'post_list' : post_list})
 
 
 
-
-
 def for_review(request):
-    return render(request, 'clients/for_reviewpage.html')
+
+    lecture = request.POST.get('lecture_select')
+    print(lecture)
+
+    return render(request, 'clients/for_reviewpage.html',lecture)
 

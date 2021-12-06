@@ -4,6 +4,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'gmarket';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
     margin: 0px;
@@ -57,6 +63,12 @@ body{
 
 
 
+#list_search{
+    text-align: center;
+    font-family: 'gmarket';
+    border:10px;
+}
+
 
 #submitbutton{
     border:5px solid #fdb0b0;
@@ -65,14 +77,13 @@ body{
     background-color: #fdb0b0;
     font-family: '어그로';
     font-weight: bold;
-    font-size: 25px;
+    font-size: 13px;
     color:white;
     text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
     text-align: center;
     justify-content: center;
     padding : 5px;
-    width:200px;
-    margin-top: 50px;
+    width:100px;
     margin-left: auto;
     margin-right: auto;
 }

@@ -30,7 +30,7 @@
         <div id="select_lecture">
             <div style="margin-bottom: 5px; font-size: 25px; font-weight: bolder;">수강한 강의를 입력하세요.</div>
 
-            <form action="{% url 'review' %}" method='POST' > {% csrf_token %}
+            <form action="{% url 'review' %}" method='POST'> {% csrf_token %}
                 <select name="site" id="id_site">
                     <option value="ebsi"> EBSi</option>
                     <option value="mega"> 메가스터디</option>
@@ -40,18 +40,37 @@
                 <span class="input-group-btn">
                     <input class="btn btn-default" type="submit" value="Search">
                 </span>
-    
-            </form>
-    
+                <hr size="3px" color="pink" width="400px">
 
-    
+            </form>
+
         </div>
-        
-        <div id="list_search">
+
+        {% if post_list%}
+        <table style="margin-left: auto; margin-right: auto; margin-top: 20px">
+
+            <thead style="font-weight: bold; font-size: x-large; font-family: '어그로'; border: 10px;">
+                <th>강의명</th>
+                <th>선생님</th>
+                <th>과목</th>
+                <th>학년</th>
+            </thead>
+
             {% for post in post_list %}
-            <td>{{post.title}}</td>
+            <tr id="list_search">
+                <td>{{post.title}}</td>
+                <td>{{post.teacher}}</td>
+                <td>{{post.subject}}</td>
+                <td>{{post.grade}}</td>
+                <td>
+                    <form action="{% url 'for_review' %}" method='POST'> {% csrf_token %}
+                        <a href="{% url 'for_review' %}"><input type="button" id="submitbutton" value="후기 작성하기"></a>
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
-        </div>
+        </table>
+        {%endif%}
 
 
 
