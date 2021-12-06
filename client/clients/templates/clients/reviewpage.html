@@ -64,7 +64,8 @@
                 <td>{{post.grade}}</td>
                 <td>
                     <form action="{% url 'for_review' %}" method='POST'> {% csrf_token %}
-                        <a href="{% url 'for_review' %}"><input type="button" id="submitbutton" value="후기 작성하기"></a>
+                        <a href="{% url 'for_review' %}"><button name = "lecture_select" value="{{ post.title }}" id="submitbutton">후기
+                                작성하기</button></a>
                     </form>
                 </td>
             </tr>

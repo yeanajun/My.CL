@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import CategoryLog
+from .models import CategoryLog, Lecture
 
 
 class UserForm(UserCreationForm):
@@ -14,3 +14,4 @@ class CategoryLogForm(forms.ModelForm):
     class Meta:
         model = CategoryLog
         fields = '__all__'
+

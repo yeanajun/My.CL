@@ -32,3 +32,11 @@ class RecommendationLog(models.Model):
     )
 
     objects = models.DjongoManager()
+
+
+class Lecture(models.Model) :
+    title = models.CharField(max_length=100)
+    teacher = models.CharField(max_length=100)
+    subject = models.CharField(max_length=100)
+    grade = models.CharField(max_length=100)
+    link = models.CharField(max_length=200)
