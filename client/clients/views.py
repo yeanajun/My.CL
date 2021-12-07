@@ -36,6 +36,7 @@ def main(request):
             messages.error(request, "학년과 과목은 필수선택항목입니다.")
     return render(request, 'clients/landingpage.html')
 
+@csrf_exempt
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
