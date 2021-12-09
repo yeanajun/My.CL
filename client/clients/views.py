@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages 
 from django.contrib.auth import authenticate, login
+from clients.models import CategoryLog
 from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
@@ -29,10 +30,10 @@ def main(request):
     if request.method == "POST":
         form  = CategoryLogForm(request.POST)
         if form.is_valid():
-            form = form.save(commit=False)
+            form = form.save(commit=False)  
             form.user_id = request.user.id
             form.save()
-            return render(request, 'clients/recommendationpage.html')
+            return redirect('recommendation')
         
         else:
             messages.error(request, "학년과 과목은 필수선택항목입니다.")
@@ -56,12 +57,16 @@ def signup(request):
 def user_storage(request, user_id):
     client = MyMongoClient()
     user_db = client.database["auth_user"]
+    category_log = client.database["clients_categorylog"]
 
     user = user_db.find_one({"id": user_id})
-    return render(request, 'clients/mystoragepage.html', {'user': user})
+    category = category_log.find({"user_id": user_id})
+
+    return render(request, 'clients/mystoragepage.html', {'user': user, 'category': category})
     
 def recommendation(request):
-    # key = Model.object.latest('')
+    key = CategoryLog.objects.last()
+    print(key.user_id)
     return render(request, 'clients/recommendationpage.html')
 
 
