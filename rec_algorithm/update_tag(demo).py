@@ -70,7 +70,21 @@ def data_make_dict(lecture_id_list, tag_name, tag_data): #tag_name = "tag_jindo"
     dic = dict(zip(id_list, tag_value))
     return dic
 
+#dict 길이의 절반만큼 max값 추출 하여 list로 반환
+def max_filtering(dic_length, dic):
+    max_id_data = []
+    cnt = 0
+    while(cnt < dic_length*2/3):
+        if dic_length <= 5:
+            break
+        else:
+            max_data = max(dic, key=dic.get)
+            max_id_data.append(max_data)                 # max값 추출
+            del dic[max_data]                            # max값 삭제
+            cnt += 1
 
+    return max_id_data
+    
 lecture_id_list1 = searching_id("subject", "국어","data_megastudy")
 lecture_id_list2 = searching_id("grade", "고3·N수", "data_megastudy")
 intersection_id_list = list_intersection(lecture_id_list1, lecture_id_list2)
