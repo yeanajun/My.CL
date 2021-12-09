@@ -29,40 +29,64 @@ def connect_lecture_db():
 
 >>>>>>> 2d9794425264dd0fc155d42d2ca538e417e24dc9
 #_id값 찾기 -> connect_lecture_db()와 연결 되어있음
-def searching_id(title_name, site_name):
+#title 제목으로 searching 시 _id값 하나 반환
+def searching_id(key_name, value_name, site_name):
     lecture_id = ""
-    column_name = "title"
+    lecture_id_list = []
     mycol = connect_lecture_db().get_collection(site_name)
-    for dict in mycol.find({}, {column_name: 1}):
-        if dict.get(column_name) == title_name:
-            lecture_id = dict.get("_id")
+    for di in mycol.find({}, {key_name: 1}):
+        if di.get(key_name) == value_name:
+            if key_name == "title":
+                lecture_id = di.get("_id")
+                return lecture_id
+            else:
+                lecture_id_list.append(di.get("_id"))
 
-    return(lecture_id)
+    return lecture_id_list
 
-lecture_id = searching_id("2022 우리들의 기출 분석","data_megastudy")
+
+#과목, 학년으로 뽑아낸 list 교집합 ->lecture_id_list
+#list2개 교집합 list형태로 반환
+#lamda고려중
+def list_intersection(list1, list2):
+    li = list(set(list1).intersection(list2))
+    return li
+
+
+
+#tag값 update
 temp = 0
-
-#tag_data 업데이트
 def update_tag_data(lecture_id, tag_name, tag_data):
     column_name = '_id'
     mycol = connect_lecture_db().get_collection(tag_name)
     for dict in mycol.find({}, {column_name: 1, tag_data: 1}):
         temp = dict.get(tag_data) + 1
-        if dict.get(column_name) == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 수정
+        if dict.get(column_name) == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
             mycol.update_one({"_id": bson.ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
             print(dict)
 
 #update_tag_data(lecture_id, "tag_jindo", "medium")
 
+
 #_id와 tag_data값으로 dict만들기
-def data_make_dict(tag_name, tag_data): #tag_name = "tag_jindo" tag_data = "low"
+def data_make_dict(lecture_id_list, tag_name, tag_data): #tag_name = "tag_jindo" tag_data = "low"
     id_list = []
     tag_value = []
     mycol = connect_lecture_db().get_collection(tag_name)
     for di in mycol.find({}, {tag_data: 1}):
-        id_list.append(di.get("_id"))
-        tag_value.append(di.get(tag_data))
+        for i in range(len(lecture_id_list)):
+            if di.get("_id") == lecture_id_list[i]:
+                id_list.append(di.get("_id"))
+                tag_value.append(di.get(tag_data))
     dic = dict(zip(id_list, tag_value))
     return dic
 
-#dic = data_make_dict("tag_jindo", "low")
+
+lecture_id_list1 = searching_id("subject", "국어","data_megastudy")
+lecture_id_list2 = searching_id("grade", "고3·N수", "data_megastudy")
+intersection_id_list = list_intersection(lecture_id_list1, lecture_id_list2)
+dic = data_make_dict(intersection_id_list, "tag_jindo", "low")
+
+#확인용 출력
+# print(dic)
+# print(len(dic))
