@@ -14,11 +14,11 @@ class CategoryLog(models.Model):
     
     grade = models.CharField(max_length=20)
     subject = models.CharField(max_length=20)
-    achievement = models.CharField(blank=True, max_length=20)
-    site = models.CharField(blank=True, max_length=20)
-    tag_jobdam = models.CharField(blank=True, max_length=20)
-    tag_pilgi = models.CharField(blank=True, max_length=20)
-    tag_jindo = models.CharField(blank=True, max_length=20)
+    achievement = models.CharField(max_length=20)
+    site = models.CharField(max_length=20)
+    tag_jobdam = models.CharField(max_length=20)
+    tag_pilgi = models.CharField(max_length=20)
+    tag_jindo = models.CharField(max_length=20)
 
     objects = models.DjongoManager()
 
