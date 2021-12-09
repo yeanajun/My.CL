@@ -20,6 +20,27 @@
         <hr size="5px" color="pink">
 
         {{ user.username }}
-
+        <hr/>
+        {% for cat in category %}
+        <tr>
+            <td>add_data: {{cat.add_date}}</td>
+            <br/>
+            <td>grade: {{cat.grade}}</td>
+            <br/>
+            <td>subject: {{cat.subject}}</td>
+            <br/>
+            <td>achievement: {{cat.achievement}}</td>
+            <br/>
+            <td>site: {{cat.site}}</td>
+            <br/>
+            <td>tag_jobdam: {{cat.tag_jobdam}}</td>
+            <br/>
+            <td>tag_pilgi: {{cat.tag_pilgi}}</td>
+            <br/>
+            <td>tag_jindo: {{cat.tag_jindo}}</td>
+            <br/>
+        </tr>
+        <hr/>
+        {% endfor %}
     </div>
 </body>
