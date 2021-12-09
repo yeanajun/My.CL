@@ -1,9 +1,6 @@
 import pymongo
 import bson
-<<<<<<< HEAD
-=======
 import os, json
->>>>>>> 2d9794425264dd0fc155d42d2ca538e417e24dc9
 
 #수기로 입력한 수업title, 수업site, tag_data를 사이트에서 받아와야 함
 #사이트 데이터 받아오는 부분 -> 추천 해준 페이지 즉, 추천 이후의 태그 데이터 추가 과정의 코드
@@ -12,22 +9,14 @@ import os, json
 
 #mongoDB서버 연동
 def connect_lecture_db():
-<<<<<<< HEAD
-    mongodb_uri = "mongodb+srv://mycl:0102@lecture.ks2gr.mongodb.net/mycl?retryWrites=true&w=majority"
-=======
     secret_file = os.path.join("../client", 'secrets.json')
     with open(secret_file) as f:
         secrets = json.loads(f.read())
     mongodb_uri = "mongodb+srv://mycl:{}@lecture.ks2gr.mongodb.net/mycl?retryWrites=true&w=majority".format(secrets['MONGO_PW'])
->>>>>>> 2d9794425264dd0fc155d42d2ca538e417e24dc9
     myclient = pymongo.MongoClient(mongodb_uri)
     mydb = myclient.get_database("lecture")
     return mydb
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d9794425264dd0fc155d42d2ca538e417e24dc9
 #_id값 찾기 -> connect_lecture_db()와 연결 되어있음
 #title 제목으로 searching 시 _id값 하나 반환
 def searching_id(key_name, value_name, site_name):
