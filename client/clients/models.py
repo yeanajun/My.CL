@@ -28,3 +28,16 @@ class Lecture(models.Model) :
     subject = models.CharField(max_length=100)
     grade = models.CharField(max_length=100)
     link = models.CharField(max_length=200)
+
+class ReviewLog(models.Model):
+    _id = models.ObjectIdField()
+    user_id = models.IntegerField(blank=True)
+    add_date = models.DateTimeField(auto_now_add=True)
+    
+    achivement = models.CharField(max_length=20)
+    tag_jobdam = models.CharField(max_length=20)
+    tag_pilgi = models.CharField(max_length=20)
+    tag_jindo = models.CharField(max_length=20)
+    lec_comment = models.CharField(max_length = 1000)
+
+    objects = models.DjongoManager()
