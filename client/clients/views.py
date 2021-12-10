@@ -82,8 +82,6 @@ def recommendation_res_title(res_list, tag_name):
                 recom_list.append(di.get("title"))
     return recom_list
 
-################################################################################
-
 def main(request):
     if request.method == "POST":
         form  = CategoryLogForm(request.POST)
