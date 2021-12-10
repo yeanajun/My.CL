@@ -73,13 +73,16 @@ def max_filtering(dic_length, dic):
 
     return max_id_data
 
-#결과값 title을 list로 반환
+#결과값 title, teacher, subject ...를 list의 list로 반환
 def recommendation_res_title(res_list, tag_name):
+    rec_res_list = []
     mycol = connect_lecture_db().get_collection(tag_name)
-    for di in mycol.find():
-        if di.get("_id") == res_list:
-            di.pop("_id")
-            return list(di.values())
+    for i in res_list:
+        for di in mycol.find():
+            if di.get("_id") == i:
+                di.pop("_id")
+                rec_res_list.append(list(di.values()))
+    return rec_res_list
 
 ################################################################################
 
