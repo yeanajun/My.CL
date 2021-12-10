@@ -26,76 +26,68 @@
 
             <hr size="5px" color="pink">
 
-
-            <div>
+            <form action="{% url 'get_review' %}" method='POST'> {% csrf_token %}
+            <div id="lec_title">
                 <a href="{{ lecture.link }}">{{ lecture.title }} 후기 작성하기</a>
             </div>
-
-
-            <form action="{% url 'for_review' %}" method='POST'> {% csrf_token %}
 
                 <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
                     <tr style="vertical-align: top">
                         <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
 
+
                             <class id="components">
-                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
-                                    등급
+                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">등급
                                 </div>
                                 <div id="achievementbutton" style="justify-content: center; display: inline-block;">
-                                    <input type="radio" id="abutton1" name="category-achievement" value="A" /><label
-                                        for="abutton1" style="margin-right: 20px;">1-2등급</label>
-                                    <input type="radio" id="abutton2" name="category-achievement" value="B" /><label
-                                        for="abutton2" style="margin-right: 20px;">3-4등급</label>
-                                    <input type="radio" id="abutton3" name="category-achievement" value="C" /><label
-                                        for="abutton3" style="margin-right: 20px;">5-6등급</label>
-                                    <input type="radio" id="abutton4" name="category-achievement" value="F" /><label
+                                    <input type="radio" id="abutton1" name="achivement" value="onetotwo" /><label for="abutton1"
+                                        style="margin-right: 30px;">1-2등급</label>
+                                    <input type="radio" id="abutton2" name="achivement" value="threetofour" /><label for="abutton2"
+                                        style="margin-right: 30px;">3-4등급</label>
+                                    <input type="radio" id="abutton3" name="achivement" value="fivetosix" /><label for="abutton3"
+                                        style="margin-right: 30px;">5-6등급</label>
+                                    <input type="radio" id="abutton4" name="achivement" value="seventonine" /><label
                                         for="abutton4">7-9등급</label>
                                 </div>
                             </class>
 
                             <class id="components">
-                                <div
-                                    style="margin-top : 10px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
+                                <div style="margin-top : 10px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
                                     잡담양
                                 </div>
                                 <div id="chatbutton" style="justify-content: center; display: inline-block;">
-                                    <input type="radio" id="cbutton1" name="category-tag_jobdam" value="low" /><label
-                                        for="cbutton1" style="margin-right: 30px;">없음</label>
-                                    <input type="radio" id="cbutton2" name="category-tag_jobdam" value="medium" /><label
+                                    <input type="radio" id="cbutton1" name="tag_jobdam" value="low" /><label for="cbutton1"
+                                        style="margin-right: 30px;">없음</label>
+                                    <input type="radio" id="cbutton2" name="tag_jobdam" value="medium" /><label
                                         for="cbutton2" style="margin-right: 30px;">적당히</label>
-                                    <input type="radio" id="cbutton3" name="category-tag_jobdam" value="high" /><label
+                                    <input type="radio" id="cbutton3" name="tag_jobdam" value="high" /><label
                                         for="cbutton3">많음</label>
                                 </div>
                             </class>
-
+    
                             <class id="components">
-                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
-                                    필기양
+                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">필기양
                                 </div>
                                 <div id="notebutton" style="justify-content: center; display: inline-block;">
-                                    <input type="radio" id="nbutton1" name="category-tag_pilgi" value="low" /><label
-                                        for="nbutton1" style="margin-right: 20px; ">없음</label>
-                                    <input type="radio" id="nbutton2" name="category-tag_pilgi" value="medium" /><label
+                                    <input type="radio" id="nbutton1" name="tag_pilgi" value="low" /><label for="nbutton1"
+                                        style="margin-right: 20px; ">없음</label>
+                                    <input type="radio" id="nbutton2" name="tag_pilgi" value="medium" /><label
                                         for="nbutton2" style="margin-right: 20px; ">적당히</label>
-                                    <input type="radio" id="nbutton3" name="category-tag_pilgi" value="high" /><label
+                                    <input type="radio" id="nbutton3" name="tag_pilgi" value="high" /><label
                                         for="nbutton3">많음</label>
                                 </div>
                             </class>
-
+    
                             <class id="components">
-                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">
-                                    진도
+                                <div style="margin-top:30px; margin-bottom: 5px; font-size: 25px; font-weight: bolder;">진도
                                 </div>
                                 <div id="progressbutton" style="justify-content: center; display: inline-block;">
-                                    <input type="radio" id="probutton1" name="category-tag_jindo"
-                                        value="jindo_low" /><label for="probutton1"
-                                        style="margin-right: 30px;">천천히</label>
-                                    <input type="radio" id="probutton2" name="category-tag_jindo"
-                                        value="jindo_medium" /><label for="probutton2"
-                                        style="margin-right: 30px;">적당히</label>
-                                    <input type="radio" id="probutton3" name="category-tag_jindo"
-                                        value="jindo_high" /><label for="probutton3">빠름</label>
+                                    <input type="radio" id="probutton1" name="tag_jindo" value="low" /><label
+                                        for="probutton1" style="margin-right: 30px;">천천히</label>
+                                    <input type="radio" id="probutton2" name="tag_jindo" value="medium" /><label
+                                        for="probutton2" style="margin-right: 30px;">적당히</label>
+                                    <input type="radio" id="probutton3" name="tag_jindo" value="high" /><label
+                                        for="probutton3">빠름</label>
                                 </div>
                             </class>
 
@@ -106,7 +98,7 @@
                             <div id="review_post">
 
                                 <textarea name="lec_comment" value="{{ lec_comment }}" id="lec_comment"
-                                    placeholder="강의에 대한 후기를 작성해주세요!"></textarea>
+                                    placeholder="강의에 대한 후기를 작성해주세요! (1000자 이내)"></textarea>
                             </div>
 
                         </td>

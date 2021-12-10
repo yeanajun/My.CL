@@ -2,14 +2,15 @@ from django.http import request
 from django.shortcuts import render, redirect
 from django.contrib import messages 
 from django.contrib.auth import authenticate, login
+from clients.forms import ReviewForm
 from clients.models import CategoryLog
-from clients.forms import UserForm, CategoryLogForm
+from clients.forms import UserForm, CategoryLogForm, ReviewForm
 from pymongo import MongoClient
 
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 
-import os, json, bson
+import os, json
 from pathlib import Path
 
 #mongoDB서버 연동
@@ -213,13 +214,25 @@ def for_review(request):
         if(lec.get("title") == lecture_title):
             lecture = lec
 
-    lecture_comment = request.POST.get('lec_comment')
-
-    print(lecture_comment)
     
 
 
     return render(request, 'clients/for_reviewpage.html', {'lecture' : lecture})
 
 
+def get_review(request):
+    
+    if request.method == "POST":
+        review_form  = ReviewForm(request.POST)
+        print(review_form)
+        if review_form.is_valid():
+            review_form = review_form.save(commit=False)  
+            review_form.user_id = request.user.id
+            review_form.save()
+            print(review_form)
+            return redirect('main')
+        
+        else:
+            messages.error(request, "모든 카테고리를 선택해주세요.")
 
+    return render(request, 'clients/for_reviewpage.html')
