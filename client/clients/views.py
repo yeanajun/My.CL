@@ -17,7 +17,7 @@ def connect_lecture_db():
     secret_file = os.path.join(BASE_DIR, 'secrets.json')
     with open(secret_file) as f:
         secrets = json.loads(f.read())
-    mongodb_uri = "mongodb+srv://mycl:{}@lecture.ks2gr.mongodb.net/mycl?retryWrites=true&w=majority".format(secrets['MONGO_PW'])
+    mongodb_uri = "mongodb+srv://mycl:{}@lecture.ks2gr.mongodb.net/mycl?retryWrites=true&w=majority".format(os.environ.get('MONGO_PW'))
     myclient = MongoClient(mongodb_uri)
     mydb = myclient.get_database("lecture")
     return mydb
