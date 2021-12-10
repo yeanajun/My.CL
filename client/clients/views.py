@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.contrib import messages 
 from django.contrib.auth import authenticate, login
@@ -169,14 +170,12 @@ def review(request):
             post_lec = etoos.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
             return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})            
 
-    
-
 
     
     return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
 
 
-
+@csrf_exempt
 def for_review(request):
     ebsi = connect_lecture_db().get_collection("data_ebsi")
     mega = connect_lecture_db().get_collection("data_megastudy")
@@ -201,8 +200,13 @@ def for_review(request):
         if(lec.get("title") == lecture_title):
             lecture = lec
 
+    lecture_comment = request.POST.get('lec_comment')
 
+    print(lecture_comment)
+    
 
 
     return render(request, 'clients/for_reviewpage.html', {'lecture' : lecture})
+
+
 
