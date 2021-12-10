@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import CategoryLog, RecommendationLog
+from .models import CategoryLog
 
 admin.site.register(CategoryLog)
-admin.site.register(RecommendationLog)

@@ -137,6 +137,11 @@ def recommendation(request):
     reslist = max_filtering(len(dic4), dic4)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
     
+    rec_log_db = connect_lecture_db().get_collection("clients_recommendationlog")
+
+    log = {'user_id': key.user_id, 'lec_list': rec_res_list}
+    rec_log_db.insert(log)
+
     return render(request, 'clients/recommendationpage.html', {"list": rec_res_list})
 
 

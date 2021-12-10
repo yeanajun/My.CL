@@ -22,18 +22,6 @@ class CategoryLog(models.Model):
 
     objects = models.DjongoManager()
 
-class RecommendationLog(models.Model):
-    _id = models.ObjectIdField()
-    user_id = models.IntegerField(blank=True)
-    add_date = models.DateTimeField(auto_now_add=True)
-
-    rec_lecture = models.ArrayField(
-        model_container=Recommendation
-    )
-
-    objects = models.DjongoManager()
-
-
 class Lecture(models.Model) :
     title = models.CharField(max_length=100)
     teacher = models.CharField(max_length=100)
