@@ -77,13 +77,11 @@ def max_filtering(dic_length, dic):
 
 #결과값 title을 list로 반환
 def recommendation_res_title(res_list, tag_name):
-    recom_list = []
     mycol = connect_lecture_db().get_collection(tag_name)
-    for i in range(len(res_list)):
-        for di in mycol.find({}, {"title": 1}):
-            if di.get("_id") == res_list[i]:
-                recom_list.append(di.get("title"))
-    return recom_list
+    for di in mycol.find():
+        if di.get("_id") == res_list:
+            di.pop("_id")
+            return list(di.values())
 
 
 #문자열 부분 사이트에서 데이터 받아와야 함
