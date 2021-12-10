@@ -195,7 +195,7 @@ def for_review(request):
     mega = connect_lecture_db().get_collection("data_megastudy")
     etoos = connect_lecture_db().get_collection("data_etoos")
 
-    lecture_title = request.POST.get('lecture_select')
+    lecture_title = request.GET.get('lecture_select')
 
     EBS = ebsi.find()
     MEGA = mega.find()
@@ -230,9 +230,11 @@ def get_review(request):
             review_form.user_id = request.user.id
             review_form.save()
             print(review_form)
+            messages.info(request, "후기 등록이 완료되었습니다.")
             return redirect('main')
         
         else:
             messages.error(request, "모든 카테고리를 선택해주세요.")
+
 
     return render(request, 'clients/for_reviewpage.html')
