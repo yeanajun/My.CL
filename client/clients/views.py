@@ -126,17 +126,17 @@ def recommendation(request):
 
     #문자열 부분 사이트에서 데이터 받아와야 함
     lecture_id_list1 = searching_id("subject", key.subject, "data_{}".format(key.site))
-    print(lecture_id_list1)
     lecture_id_list2 = searching_id("grade", key.grade, "data_{}".format(key.site))
     intersection_id_list = list_intersection(lecture_id_list1, lecture_id_list2)
-    print(intersection_id_list)
+
     dic = data_make_dict(intersection_id_list, "tag_jindo", "low")
     dic2 = data_make_dict(max_filtering(len(dic),dic), "tag_jobdam", "low")
     dic3 = data_make_dict(max_filtering(len(dic2),dic2), "tag_pilgi", "high")
-    dic4 = data_make_dict(max_filtering(len(dic3),dic3), "achievement", "onetotwo")
+    dic4 = data_make_dict(max_filtering(len(dic3),dic3), "tag_achivement", "onetotwo")
+
     reslist = max_filtering(len(dic4), dic4)
-    print(reslist)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
+    
     return render(request, 'clients/recommendationpage.html', {"list": rec_res_list})
 
 

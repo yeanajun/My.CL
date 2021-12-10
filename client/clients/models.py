@@ -14,7 +14,7 @@ class CategoryLog(models.Model):
     
     grade = models.CharField(max_length=20)
     subject = models.CharField(max_length=20)
-    achievement = models.CharField(max_length=20)
+    achivement = models.CharField(max_length=20)
     site = models.CharField(max_length=20)
     tag_jobdam = models.CharField(max_length=20)
     tag_pilgi = models.CharField(max_length=20)
