@@ -153,11 +153,7 @@ input[type = radio]:checked+label{
     margin-right: auto;
 }
 
-#goreviewbutton:hover{
-    background-color: white;
-    border: 5px solid #3ecac7;
-    vertical-align: middle;
-}
+
 
 
 #lec_comment{
