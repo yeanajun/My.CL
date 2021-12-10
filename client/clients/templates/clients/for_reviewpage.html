@@ -26,11 +26,12 @@
 
             <hr size="5px" color="pink">
 
-            <form action="{% url 'get_review' %}" method='POST'> {% csrf_token %}
+
             <div id="lec_title">
                 <a href="{{ lecture.link }}">{{ lecture.title }} 후기 작성하기</a>
             </div>
-
+            
+            <form action="{% url 'get_review' %}" method='POST'> {% csrf_token %}
                 <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
                     <tr style="vertical-align: top">
                         <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
@@ -105,9 +106,8 @@
                     </tr>
                 </table>
 
-                <span class="input-group-btn">
-                    <input id="submitbutton" class="submitbutton" type="submit" value="후기 등록하기">
-                </span>
+
+                <input id="submitbutton" class="submitbutton" type="submit" value="후기 등록하기">
             </form>
         </div>
 </body>
