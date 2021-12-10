@@ -7,6 +7,7 @@ from clients.forms import UserForm, CategoryLogForm
 from pymongo import MongoClient
 
 from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
 
 import os, json, bson
 from pathlib import Path
@@ -136,12 +137,18 @@ def recommendation(request):
     reslist = max_filtering(len(dic4), dic4)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
     
-    rec_log_db = connect_lecture_db().get_collection("clients_recommendationlog")
+    # x 눌렀을 시 2개씩 계속 출력
+    paginator = Paginator(rec_res_list, 2)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
 
+    # recommendation log 추가
+    rec_log_db = connect_lecture_db().get_collection("clients_recommendationlog")
+    
     log = {'user_id': key.user_id, 'lec_list': rec_res_list}
     rec_log_db.insert(log)
 
-    return render(request, 'clients/recommendationpage.html', {"list": rec_res_list})
+    return render(request, 'clients/recommendationpage.html', {"list": rec_res_list, 'posts': posts})
 
 
 @csrf_exempt

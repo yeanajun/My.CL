@@ -1,3 +1,11 @@
-{% for l in list %}
-{{ l }}
+{% for post in posts %}
+{{ post }}
 {% endfor %}
+
+{% if posts.has_previous %}
+<a href="?page=1">맨 처음 결과</a>
+<a href="?page={{posts.previous_page_number}}">이전 결과</a>
+{% endif %}
+{% if posts.has_next %}
+<a href="?page={{posts.next_page_number}}">결과를 더 보고싶어요</a>
+{% endif %}
