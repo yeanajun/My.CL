@@ -1,0 +1,95 @@
+@font-face {
+    font-family: '어그로';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gmarket';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    margin: 0px;
+    padding: 10px;
+}
+#page1{
+    width: 80%;
+    margin: auto;
+}
+
+#logo{
+    width: auto;
+    height: 150px;
+    text-align: center;
+}
+
+#header{
+    text-align: start;
+    margin-left: 20px;
+}
+#reviewheader{
+    font-family: '어그로';
+    font-weight: bolder;
+    font-size: 25px;
+    color:#000;
+    margin-left:2%;
+}
+
+
+#authbutton{
+    color:#3ecac7;
+    background-color: white;
+    border : 0px;
+    margin-right: 10px;
+    font-family: '어그로';
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#authbutton:hover{
+    text-shadow: 1px 1px 1px #000;
+}
+
+
+#select_lecture{
+    font-family: '어그로';
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+#list_search{
+    text-align: center;
+    font-family: 'gmarket';
+    border:10px;
+}
+
+
+#submitbutton{
+    border:5px solid #fdb0b0;
+    display: flex;
+    align-items: center;
+    background-color: #fdb0b0;
+    font-family: '어그로';
+    font-weight: bold;
+    font-size: 13px;
+    color:white;
+    text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
+    text-align: center;
+    justify-content: center;
+    padding : 5px;
+    width:100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submitbutton:hover{
+    background-color: white;
+    border: 5px solid #fdb0b0;
+    vertical-align: middle;
+}

@@ -1,0 +1,124 @@
+@font-face {
+    font-family: '어그로';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    margin: 0px;
+    padding: 10px;
+}
+#page1{
+    width: 80%;
+    margin: auto;
+}
+
+#logo{
+    width: auto;
+    height: 200px;
+    text-align: center;
+}
+#header{
+    text-align: center;
+}
+
+#authbutton{
+    color:#3ecac7;
+    background-color: white;
+    border : 0px;
+    margin-right: 10px;
+    font-family: '어그로';
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#authbutton:hover{
+    text-shadow: 1px 1px 1px #000;
+}
+
+table, td{
+    text-align: center;
+}
+
+#components{
+    font-family: '어그로';
+    font-weight: bold;
+}
+
+input[type=radio]{
+    display: none;
+    margin:10px;
+}
+
+input[type = radio]:empty+label{
+    border: 5px solid #fdb0b0;
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    float: left;
+    border-radius: 12px;
+    justify-content: center;
+    background-color: white;
+    font-family: '어그로';
+    font-weight: bold;
+    
+}
+
+input[type = radio]:hover+label{
+    border:5px solid #3ecac7;
+}
+
+input[type = radio]:checked+label{
+    border:5px solid #3ecac7;
+} 
+
+
+#submitbutton{
+    border:5px solid #fdb0b0;
+    display: flex;
+    align-items: center;
+    background-color: #fdb0b0;
+    font-family: '어그로';
+    font-weight: bold;
+    font-size: 25px;
+    color:white;
+    text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
+    text-align: center;
+    justify-content: center;
+    padding : 5px;
+    width:200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submitbutton:hover{
+    background-color: white;
+    border: 5px solid #fdb0b0;
+    vertical-align: middle;
+}
+
+#goreviewbutton{
+    border:5px solid #3ecac7;
+    background-color: #3ecac7;
+    font-family: '어그로';
+    font-weight: bold;
+    font-size: 18px;
+    color:white;
+    text-shadow: -2px -2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000;
+    text-align:center;
+    justify-content: center;
+    padding : 5px;
+    width:200px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#goreviewbutton:hover{
+    background-color: white;
+    border: 5px solid #3ecac7;
+    vertical-align: middle;
+}
