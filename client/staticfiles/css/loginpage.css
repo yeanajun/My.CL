@@ -1,0 +1,108 @@
+@font-face {
+    font-family: '어그로';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    margin: 0px;
+    padding: 10px;
+    text-align: center;
+
+}
+#page1{
+    width: 80%;
+    margin: auto;
+    align-items: center;
+}
+
+#logo{
+    width: auto; 
+    height: 200px;
+}
+
+#logintext{
+    font-family: '어그로';
+    font-size: 30px;
+    font-weight: 800;
+}
+  
+.loginForm {
+    position:absolute;
+    width:300px;
+    text-align:center;
+    font-family: '어그로';
+    align-items: center;
+    vertical-align: middle;
+    margin: auto;
+    display: inline-block;
+    transform: translate(-50%,-50%);
+    top:45%;
+    
+}
+
+  
+.idForm{
+    border-bottom: 2px solid #adadad;
+    margin: 30px;
+    padding: 10px 10px;
+    font-family: '어그로';
+}
+  
+.passForm{
+    border-bottom: 2px solid #adadad;
+    margin: 30px;
+    padding: 10px 10px;
+    font-family: '어그로';
+}
+  
+.id {
+    width: 100%;
+    border:none;
+    outline:none;
+    color: #636e72;
+    font-size:16px;
+    height:25px;
+    background: none;
+    font-family: '어그로';
+}
+  
+.pw {
+    width: 100%;
+    border:none;
+    outline:none;
+    color: #636e72;
+    font-size:16px;
+    height:25px;
+    background: none;
+    font-family: '어그로';
+}
+  
+.btn {
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:80%;
+    height:40px;
+    background: linear-gradient(125deg,#fdb0b0,#3ecac7,#fdb0b0);
+    background-position: left;
+    background-size: 200%;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-family: '어그로';
+}
+  
+.btn:hover {
+    background-position: right;
+}
+  
+.bottomText {
+    text-align: center;
+    font-family: '어그로';
+}
