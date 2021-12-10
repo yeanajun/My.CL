@@ -14,4 +14,3 @@ class CategoryLogForm(forms.ModelForm):
     class Meta:
         model = CategoryLog
         fields = '__all__'
-

@@ -117,7 +117,7 @@ input[type = radio]:checked+label{
     vertical-align: middle;
 }
 
-#goreviewbutton{
+#submitwbutton{
     border:5px solid #3ecac7;
     background-color: #3ecac7;
     font-family: '어그로';
@@ -139,3 +139,18 @@ input[type = radio]:checked+label{
     border: 5px solid #3ecac7;
     vertical-align: middle;
 }
+
+
+#lec_comment{
+	width: 400px;;
+    height: 500px;
+	border:2px solid #aaa;
+	border-radius:4px;
+	margin: 8px 0;
+	outline: none;
+	padding:8px;
+	box-sizing: border-box;
+	transition:.3s;
+    vertical-align: text-top;
+}
+
