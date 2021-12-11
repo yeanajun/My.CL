@@ -118,13 +118,33 @@ def reviewlog_load():
     update_tag_data(key.lecture_id, "tag_pilgi", key.tag_pilgi)
     update_tag_data(key.lecture_id, "tag_jindo", key.tag_jindo)
 
+#한국어 표기 변환    
+def change_kr_achievement(data):
+    if data == "onetotwo":
+        return "1-2등급"
+    elif data == "threetofour":
+        return "3-4등급"
+    elif data == "fivetosix":
+        return "5-6등급"
+    elif data == "seventonine":
+        return "7-9등급"
+
+def change_kr_tag(data):
+    if data == "medium":
+        return "적당함"
+    elif data == "high":
+        return "많음"
+    elif data == "low":
+        return "적음"
+
 #사용자가 선택한 tag_data 딕셔너리
 def choice_tag_dict(key):
-    tag_dict = {"jobdam": key.tag_jobdam,
-                "jindo": key.tag_jindo,
-                "pilgi": key.tag_pilgi,
-                "site": key.site,
-                "achievement": key.achievement
+    
+    tag_dict = {"잡담양": change_kr_tag(key.tag_jobdam),
+                "진도양": change_kr_tag(key.tag_jindo),
+                "필기양": change_kr_tag(key.tag_pilgi),
+                "강의사이트": key.site,
+                "등급": change_kr_achievement(key.achievement)
                 }
     return tag_dict
 ################################################################################
