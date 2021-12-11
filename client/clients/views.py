@@ -125,7 +125,7 @@ def choice_tag_dict(key):
                 "jindo": key.tag_jindo,
                 "pilgi": key.tag_pilgi,
                 "site": key.site,
-                "achievement": key.achievement
+                "achivement": key.achivement
                 }
     return tag_dict
 ################################################################################
@@ -182,7 +182,7 @@ def recommendation(request):
 
     reslist = max_filtering(len(dic4), dic4)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
-    #choice_tag_dict(key)
+    cho_tag = choice_tag_dict(key)
 
     # x 눌렀을 시 2개씩 계속 출력
     paginator = Paginator(rec_res_list, 2)
@@ -194,7 +194,7 @@ def recommendation(request):
     log = {'user_id': key.user_id, 'lec_list': rec_res_list}
     rec_log_db.insert(log)
 
-    return render(request, 'clients/recommendationpage.html', {"list": rec_res_list, 'posts': posts})
+    return render(request, 'clients/recommendationpage.html', {"list": rec_res_list, 'posts': posts, 'cho_tag' : cho_tag})
 
 
 @csrf_exempt
