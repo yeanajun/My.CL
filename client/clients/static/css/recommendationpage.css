@@ -63,24 +63,26 @@ table, td{
 
 #box_model{
     width: 400px;
-    height: 150px;
+    height: 80px;
     padding: 20px;
     margin: 10 10 10 10;
     background-color: #fdb0b0;
     border-radius: 20px;
     align-items: center;
+    vertical-align: middle;
 }
 
 
 
 
 #lec_title{
-    margin: top 20px bottom 40px;
-    font-family: '어그로';
-    font-weight: bold;
-    font-size: xx-large;
-    text-align: center;
-    color: #fdb0b0;
+    font-family: 'gmarket';
+    font-size: 20px;
+}
+
+#lec_info{
+    font-family: 'gmarket';
+    font-size:15px;
 }
 
 
@@ -155,3 +157,18 @@ table, td{
 }
 
 
+a:link {
+    color : #000;
+    text-decoration: none;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+a:visited {
+   color : #3ecac7;
+   text-decoration: underline;
+   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+a:hover {
+    color : #3ecac7;
+    text-decoration: underline;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
