@@ -59,6 +59,15 @@ table, td{
     text-align: center;
 }
 
+#tag_box{
+    width: 400px;
+    height: 150px;
+    padding: 20px;
+    margin: 10 10 10 10;
+    border-radius: 40px;
+    align-items: center;
+    border:12px solid #fdb0b0 ;
+}
 
 
 #box_model{
@@ -71,7 +80,10 @@ table, td{
     align-items: center;
     vertical-align: middle;
 }
-
+#tag_info{
+    font-family: 'gmarket';
+    font-size:20px;
+}
 
 
 
