@@ -160,31 +160,21 @@ def review(request):
     ebsi = connect_lecture_db().get_collection("data_ebsi")
     mega = connect_lecture_db().get_collection("data_megastudy")
     etoos = connect_lecture_db().get_collection("data_etoos")
-
-
     site_text = request.POST.get('site')
-
     search_key = request.POST.get('search_key')
-
     post_lec = {}
-
-
     if(site_text=="ebsi") :
         if search_key :
             post_lec = ebsi.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
             return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
-
     elif(site_text=="mega") :
         if search_key :
             post_lec = mega.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
             return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
-
     elif(site_text=="etoos") :
         if search_key :
             post_lec = etoos.find({"$or" : [{'title':{'$regex':search_key}} , {'title':search_key}]})
             return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})            
-
-
     
     return render(request, 'clients/reviewpage.html', {'post_lec' : post_lec})
 
@@ -214,9 +204,6 @@ def for_review(request):
         if(lec.get("title") == lecture_title):
             lecture = lec
 
-    
-
-
     return render(request, 'clients/for_reviewpage.html', {'lecture' : lecture})
 
 
@@ -224,12 +211,10 @@ def get_review(request):
     
     if request.method == "POST":
         review_form  = ReviewForm(request.POST)
-        print(review_form)
         if review_form.is_valid():
             review_form = review_form.save(commit=False)  
             review_form.user_id = request.user.id
             review_form.save()
-            print(review_form)
             messages.info(request, "후기 등록이 완료되었습니다.")
             return redirect('main')
         
