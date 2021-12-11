@@ -49,8 +49,25 @@
 
                     {% endfor %}
                 </td>
+
                 <td style="width:50%; text-align: center;">
-                    
+                    {% for rev in review %}
+                    <div id="review_box"
+                    style="justify-content: center; display: inline-block; margin-bottom: 20px; margin: top 20px;">
+                    <span id="date">{{rev.add_date}}에 작성한 후기</span>
+                    <p>
+    
+                        <div id = "rev_title">강의명 : {{rev.lecture_title}}</div>
+                        <div id = "rev_info">추천 등급 : {{rev.achivement}}</div>
+                        <div id = "rev_info">잡담양 : {{rev.tag_jobdam}}</div>
+                        <div id = "rev_info">진도 : {{rev.tag_jindo}}</div>
+                        <div id = "rev_info">필기양 : {{rev.tag_pilgi}}</div>
+                        <div id = "rev_info">코멘트 : {{rev.lec_comment}}</div>
+
+                    </p>
+
+                    </div>
+                    {% endfor %}
                 </td>
             </tr>
         </table>

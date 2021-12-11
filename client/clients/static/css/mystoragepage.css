@@ -84,3 +84,24 @@ table, td{
     font-family: 'gmarket';
     font-weight: bold;
 }
+
+#review_box{
+    width: 400px;
+    height: 300px;
+    padding: 20px;
+    margin: 10 10 10 10;
+    border-radius: 40px;
+    align-items: center;
+    border:12px solid #fdb0b0 ;
+}
+
+#rev_title{
+    font-family: '어그로';
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+#rev_info{
+    font-family: 'gmarket';
+    font-size:20px;
+}
