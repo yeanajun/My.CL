@@ -33,7 +33,6 @@ class ReviewLog(models.Model):
     _id = models.ObjectIdField()
     user_id = models.IntegerField(blank=True)
     add_date = models.DateTimeField(auto_now_add=True)
-    
     achivement = models.CharField(max_length=20)
     tag_jobdam = models.CharField(max_length=20)
     tag_pilgi = models.CharField(max_length=20)

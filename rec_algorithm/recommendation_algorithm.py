@@ -37,15 +37,18 @@ def list_intersection(list1, list2):
 
 #tag값 update
 def update_tag_data(lecture_id, tag_name, tag_data):
-    column_name = '_id'
     mycol = connect_lecture_db().get_collection(tag_name)
-    for di in mycol.find({}, {column_name: 1, tag_data: 1}):
+    for di in mycol.find({}, {tag_data: 1}):
         temp = di.get(tag_data) + 1
-        if di.get(column_name) == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
+        if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
             mycol.update_one({"_id": bson.ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
 
-#update_tag_data(lecture_id, "tag_jindo", "medium")
-
+def reviewlog_load():
+    key = ReviewLog.objects.last()
+    update_tag_data(key.lecture_id, "tag_achivement", key.achivement)
+    update_tag_data(key.lecture_id, "tag_jobdam", key.tag_jobdam)
+    update_tag_data(key.lecture_id, "tag_pilgi", key.tag_pilgi)
+    update_tag_data(key.lecture_id, "tag_jindo", key.tag_jindo)
 
 #_id와 tag_data값으로 dict만들기
 def data_make_dict(lecture_id_list, tag_name, tag_data):
