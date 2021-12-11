@@ -94,7 +94,7 @@ def recommendation_res_title(res_list, tag_name):
             if di.get("_id") == i:
                 di.pop("_id")
                 temp = list(di.values())
-                temp.append(review_comment_load(i))         #comment부분 추가
+                # temp.append(review_comment_load(i))         #comment부분 추가
                 rec_res_list.append(temp)
     return rec_res_list
 

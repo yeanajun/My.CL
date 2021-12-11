@@ -37,7 +37,8 @@
                     {% for post in posts %}
                     <div id="box_model"
                         style="justify-content: center; display: inline-block; margin-bottom: 20px; margin: top 20px;">
-                        <p>{{ post }}</p>
+                        <a href = "{{post.4}}" id="lec_title">{{ post.0 }}</p></a>
+                        <p id="lec_info"> {{post.1}} 선생님 </p>
                     </div>
 
                     {% endfor %}
