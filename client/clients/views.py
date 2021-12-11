@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages 
 from django.contrib.auth import authenticate, login
 from clients.forms import ReviewForm
-from clients.models import CategoryLog
+from clients.models import CategoryLog,ReviewLog
 from clients.forms import UserForm, CategoryLogForm, ReviewForm
 from pymongo import MongoClient
 
@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 
 import os, json
+from bson.objectid import ObjectId
 from pathlib import Path
 
 #mongoDB서버 연동
@@ -75,6 +76,15 @@ def max_filtering(dic_length, dic):
 
     return max_id_data
 
+#추천 결과창에 후기 comment출력
+def review_comment_load(idv):
+    key = ReviewLog.objects.all()
+    for k in key:
+        if key.lecture_id == idv:
+            return key.lec_comment
+        else:
+            pass
+
 #결과값 title, teacher, subject ...를 list의 list로 반환
 def recommendation_res_title(res_list, tag_name):
     rec_res_list = []
@@ -83,8 +93,27 @@ def recommendation_res_title(res_list, tag_name):
         for di in mycol.find():
             if di.get("_id") == i:
                 di.pop("_id")
-                rec_res_list.append(list(di.values()))
+                temp = list(di.values())
+                temp.append(review_comment_load(i))
+                rec_res_list.append(temp)
     return rec_res_list
+
+#tag 값 update
+def update_tag_data(lecture_id, tag_name, tag_data):
+    mycol = connect_lecture_db().get_collection(tag_name)
+    for di in mycol.find({}, {tag_data: 1}):
+        temp = di.get(tag_data) + 1
+        if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
+            mycol.update_one({"_id": ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
+
+#가장 최신 리뷰 데이터 update
+def reviewlog_load():
+    key = ReviewLog.objects.last()
+    update_tag_data(key.lecture_id, "tag_achivement", key.achivement)
+    update_tag_data(key.lecture_id, "tag_jobdam", key.tag_jobdam)
+    update_tag_data(key.lecture_id, "tag_pilgi", key.tag_pilgi)
+    update_tag_data(key.lecture_id, "tag_jindo", key.tag_jindo)
+
 
 ################################################################################
 
@@ -127,16 +156,16 @@ def user_storage(request, user_id):
     
 def recommendation(request):
     key = CategoryLog.objects.last()
-
+    key2 = ReviewLog.objects.all()
     #문자열 부분 사이트에서 데이터 받아와야 함
     lecture_id_list1 = searching_id("subject", key.subject, "data_{}".format(key.site))
     lecture_id_list2 = searching_id("grade", key.grade, "data_{}".format(key.site))
     intersection_id_list = list_intersection(lecture_id_list1, lecture_id_list2)
 
-    dic = data_make_dict(intersection_id_list, "tag_jindo", "low")
-    dic2 = data_make_dict(max_filtering(len(dic),dic), "tag_jobdam", "low")
-    dic3 = data_make_dict(max_filtering(len(dic2),dic2), "tag_pilgi", "high")
-    dic4 = data_make_dict(max_filtering(len(dic3),dic3), "tag_achivement", "onetotwo")
+    dic = data_make_dict(intersection_id_list, "tag_jindo", key.tag_jindo)
+    dic2 = data_make_dict(max_filtering(len(dic),dic), "tag_jobdam", key.tag_jobdam)
+    dic3 = data_make_dict(max_filtering(len(dic2),dic2), "tag_pilgi", key.tag_pilgi)
+    dic4 = data_make_dict(max_filtering(len(dic3),dic3), "tag_achivement", key.achivement)
 
     reslist = max_filtering(len(dic4), dic4)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
@@ -148,7 +177,6 @@ def recommendation(request):
 
     # recommendation log 추가
     rec_log_db = connect_lecture_db().get_collection("clients_recommendationlog")
-    
     log = {'user_id': key.user_id, 'lec_list': rec_res_list}
     rec_log_db.insert(log)
 
@@ -231,6 +259,7 @@ def get_review(request):
             review_form.save()
             print(review_form)
             messages.info(request, "후기 등록이 완료되었습니다.")
+            reviewlog_load()
             return redirect('main')
         
         else:
