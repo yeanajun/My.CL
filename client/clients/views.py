@@ -221,7 +221,6 @@ def for_review(request):
 
     lecture = {}
 
-    
     for lec in EBS :
         if(lec.get("title") == lecture_title):
             lecture = lec
@@ -232,19 +231,23 @@ def for_review(request):
         if(lec.get("title") == lecture_title):
             lecture = lec
 
+
+
     return render(request, 'clients/for_reviewpage.html', {'lecture' : lecture})
 
 
-def get_review(request):
+def get_review(request, lecture_title):
     
     if request.method == "POST":
         review_form  = ReviewForm(request.POST)
+        print(request.POST.get('lecture_title'))
         if review_form.is_valid():
             review_form = review_form.save(commit=False)  
             review_form.user_id = request.user.id
+            review_form.lecture_title = lecture_title
             review_form.save()
             messages.info(request, "후기 등록이 완료되었습니다.")
-            reviewlog_load()
+            # reviewlog_load()
             return redirect('main')
         
         else:

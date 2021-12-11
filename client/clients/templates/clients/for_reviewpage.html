@@ -31,7 +31,7 @@
                 <a href="{{ lecture.link }}">{{ lecture.title }} 후기 작성하기</a>
             </div>
             
-            <form action="{% url 'get_review' %}" method='POST'> {% csrf_token %}
+            <form action="{% url 'get_review' lecture_title=lecture.title %}" method='POST'> {% csrf_token %}
                 <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
                     <tr style="vertical-align: top">
                         <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
