@@ -26,6 +26,26 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
+## 의존성 Dependencies
+
+python==3.9.2
+
+asgiref==3.4.1
+dj-database-url==0.5.0
+Django==3.1.12
+django-dotenv==1.4.2
+django-heroku==0.3.1
+djongo==1.3.6
+dnspython==2.1.0
+gunicorn==20.1.0
+psycopg2==2.9.2
+pymongo==3.12.1
+python-snappy==0.6.0
+pytz==2021.3
+sqlparse==0.2.4
+whitenoise==5.3.0
+winkerberos==0.8.0
+
 ## 이외 폴더 설명
 * crawling_code
 <br/>각 강의 사이트별 강의 목록을 크롤링할 때 사용한 코드가 포함되어 있습니다.
