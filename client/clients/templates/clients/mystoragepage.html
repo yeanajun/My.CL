@@ -1,46 +1,60 @@
 {% load static %}
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/landingpage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mystoragepage.css' %}">
 </head>
 
 <body>
     <div id="page1">
         <div id="header">
-            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}"/></a>
-        </div>
-        <div id="auth" style="text-align: end;">
-            <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
-            <a href="{% url 'storage' user_id=user.id %}"><input type="button" id="authbutton" value="{{ user.username }}님 마이페이지"></a>
+            <a href="{% url 'main' %}"><img id="logo" alt="My.Cl 로고" src="{% static 'img/로고.jpg' %}" /></a>
+            <div id="stoheader">{{user.username}}님 마이페이지</div>
+            <div id="auth" style="text-align: end;">
+                <a href="{% url 'logout' %}"><input type="button" id="authbutton" value="로그아웃"></a>
+            </div>
+
         </div>
         <hr size="5px" color="pink">
 
-        {{ user.username }}
-        <hr/>
-        {% for cat in category %}
-        <tr>
-            <td>add_data: {{cat.add_date}}</td>
-            <br/>
-            <td>grade: {{cat.grade}}</td>
-            <br/>
-            <td>subject: {{cat.subject}}</td>
-            <br/>
-            <td>achievement: {{cat.achievement}}</td>
-            <br/>
-            <td>site: {{cat.site}}</td>
-            <br/>
-            <td>tag_jobdam: {{cat.tag_jobdam}}</td>
-            <br/>
-            <td>tag_pilgi: {{cat.tag_pilgi}}</td>
-            <br/>
-            <td>tag_jindo: {{cat.tag_jindo}}</td>
-            <br/>
-        </tr>
-        <hr/>
-        {% endfor %}
+        <table style="width: 100%; margin-top : 0px; margin-left:auto; margin-right: auto;">
+            <tr style="vertical-align: top">
+                <td style="width:50%; border-right:5px solid #fdb0b0; text-align: center;">
+                    {% for cat in category %}
+                    <div id="box_model"
+                        style="justify-content: center; display: inline-block; margin-bottom: 20px; margin: top 20px;">
+                        <div id="rec_result">
+                            <span id="date">{{cat.add_date}}에 선택한 카테고리</span>
+                            
+                            <table>
+                                <p>
+                                <td id = "cat_info"><span>학년 : {{cat.grade}} </span></td>
+                                <td id = "cat_info"><span>과목 : {{cat.subject}} </span></td>
+                                <td id = "cat_info"><span>등급 : {{cat.achivement}} </span></td>
+                                <td id = "cat_info"><span>강의 사이트 : {{cat.site}}</span></td>
+                                </p>
+                            </table>
+                            
+
+                            <p id="tag_info">
+                                <span>잡담양 : {{cat.tag_jobdam}}</span>
+                                <span>필기양 : {{cat.tag_pilgi}}</span>
+                                <span>진도 : {{cat.tag_jindo}}</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </td>
+                <td style="width:50%; text-align: center;">
+                    
+                </td>
+            </tr>
+        </table>
+
     </div>
+
 </body>

@@ -1,0 +1,86 @@
+@font-face {
+    font-family: '어그로';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'gmarket';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    margin: 0px;
+    padding: 10px;
+}
+#page1{
+    width: 80%;
+    margin: auto;
+}
+
+#logo{
+    width: auto;
+    height: 150px;
+    text-align: center;
+}
+
+#header{
+    text-align: start;
+    margin-left: 20px;
+}
+#stoheader{
+    font-family: '어그로';
+    font-weight: bolder;
+    font-size: 20px;
+    color:#000;
+
+}
+
+
+#authbutton{
+    color:#3ecac7;
+    background-color: white;
+    border : 0px;
+    margin-right: 10px;
+    font-family: '어그로';
+    font-size: 17px;
+    font-weight: bold;
+
+}
+
+#authbutton:hover{
+    text-shadow: 1px 1px 1px #000;
+}
+
+table, td{
+    text-align: center;
+}
+
+
+#box_model{
+    width: 400px;
+    height: 150px;
+    padding: 20px;
+    margin: 10 10 10 10;
+    background-color: #fdb0b0;
+    border-radius: 20px;
+    align-items: center;
+}
+
+#date{
+    font-family: 'gmarket';
+}
+
+#cat_info{
+    font-family: 'gmarket';
+    
+}
+
+#tag_info{
+    font-family: 'gmarket';
+    font-weight: bold;
+}
