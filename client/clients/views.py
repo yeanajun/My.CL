@@ -100,11 +100,16 @@ def recommendation_res_title(res_list, tag_name):
 
 #tag 값 update
 def update_tag_data(lecture_id, tag_name, tag_data):
+    
     mycol = connect_lecture_db().get_collection(tag_name)
     for di in mycol.find({}, {tag_data: 1}):
         temp = di.get(tag_data) + 1
+        print(di.get("_id"))
+        print(lecture_id)
         if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
             mycol.update_one({"_id": ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
+            print('success')
+            
 
 #가장 최신 리뷰 데이터 update
 def reviewlog_load():
@@ -249,14 +254,18 @@ def get_review(request, lecture_title):
     
     if request.method == "POST":
         review_form  = ReviewForm(request.POST)
-        print(request.POST.get('lecture_title'))
         if review_form.is_valid():
             review_form = review_form.save(commit=False)  
             review_form.user_id = request.user.id
-            review_form.lecture_title = lecture_title
+            
+            for site in ['ebsi', 'megastudy', 'etoos']:
+                if searching_id("title", lecture_title, "data_{}".format(site)):
+                    review_form.lecture_id = searching_id("title", lecture_title, "data_{}".format(site))
+                    break
+
             review_form.save()
             messages.info(request, "후기 등록이 완료되었습니다.")
-            # reviewlog_load()
+            reviewlog_load()
             return redirect('main')
         
         else:
