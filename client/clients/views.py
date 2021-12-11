@@ -277,7 +277,7 @@ def get_review(request, lecture_title):
         if review_form.is_valid():
             review_form = review_form.save(commit=False)  
             review_form.user_id = request.user.id
-            
+            review_form.lecture_title = lecture_title
             for site in ['ebsi', 'megastudy', 'etoos']:
                 if searching_id("title", lecture_title, "data_{}".format(site)):
                     review_form.lecture_id = searching_id("title", lecture_title, "data_{}".format(site))
