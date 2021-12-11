@@ -104,10 +104,10 @@ def update_tag_data(lecture_id, tag_name, tag_data):
     mycol = connect_lecture_db().get_collection(tag_name)
     for di in mycol.find({}, {tag_data: 1}):
         temp = di.get(tag_data) + 1
-        print(di.get("_id"))
-        print(lecture_id)
-        if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
+
+        if di.get("_id") == ObjectId(lecture_id):  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
             mycol.update_one({"_id": ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
+
             
 
 #가장 최신 리뷰 데이터 update
@@ -160,11 +160,13 @@ def signup(request):
 def user_storage(request, user_id):
     user_db = connect_lecture_db().get_collection("auth_user")
     category_log = connect_lecture_db().get_collection("clients_categorylog")
+    review_log = connect_lecture_db().get_collection("clients_reviewlog")
 
     user = user_db.find_one({"id": user_id})
     category = category_log.find({"user_id": user_id})
+    review = review_log.find({"user_id": user_id})
 
-    return render(request, 'clients/mystoragepage.html', {'user': user, 'category': category})
+    return render(request, 'clients/mystoragepage.html', {'user': user, 'category': category, 'review': review})
     
 def recommendation(request):
     key = CategoryLog.objects.last()
