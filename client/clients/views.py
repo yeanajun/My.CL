@@ -76,7 +76,7 @@ def max_filtering(dic_length, dic):
 
     return max_id_data
 
-#추천 결과창에 후기 comment출력
+#리뷰데이터 코멘트 로딩
 def review_comment_load(idv):
     key = ReviewLog.objects.all()
     for k in key:
@@ -85,7 +85,7 @@ def review_comment_load(idv):
         else:
             pass
 
-#결과값 title, teacher, subject ...를 list의 list로 반환
+#결과값 title을 list로 반환
 def recommendation_res_title(res_list, tag_name):
     rec_res_list = []
     mycol = connect_lecture_db().get_collection(tag_name)
@@ -94,7 +94,7 @@ def recommendation_res_title(res_list, tag_name):
             if di.get("_id") == i:
                 di.pop("_id")
                 temp = list(di.values())
-                temp.append(review_comment_load(i))
+                temp.append(review_comment_load(i))         #comment부분 추가
                 rec_res_list.append(temp)
     return rec_res_list
 
