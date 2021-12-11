@@ -108,7 +108,6 @@ def update_tag_data(lecture_id, tag_name, tag_data):
         print(lecture_id)
         if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
             mycol.update_one({"_id": ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
-            print('success')
             
 
 #가장 최신 리뷰 데이터 update

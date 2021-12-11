@@ -52,8 +52,8 @@ def update_tag_data(lecture_id, tag_name, tag_data):
     mycol = connect_lecture_db().get_collection(tag_name)
     for di in mycol.find({}, {tag_data: 1}):
         temp = di.get(tag_data) + 1
-        if di.get("_id") == lecture_id:  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
-            mycol.update_one({"_id": bson.ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
+        if di.get("_id") == ObjectId(lecture_id):  # lecture에서 찾은 id값과 tag_ ***의 id값 일치 --> 태그값 +1 후에 수정
+            mycol.update_one({"_id": ObjectId(lecture_id)}, {"$set": {tag_data: temp}})
 
 def reviewlog_load():
     key = ReviewLog.objects.last()
