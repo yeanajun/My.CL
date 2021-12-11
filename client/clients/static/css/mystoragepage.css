@@ -84,3 +84,9 @@ table, td{
     font-family: 'gmarket';
     font-weight: bold;
 }
+
+#rev_title{
+    font-family: '어그로';
+    font-weight: bolder;
+    font-size: 25px;
+}
