@@ -114,7 +114,15 @@ def reviewlog_load():
     update_tag_data(key.lecture_id, "tag_pilgi", key.tag_pilgi)
     update_tag_data(key.lecture_id, "tag_jindo", key.tag_jindo)
 
-
+#사용자가 선택한 tag_data 딕셔너리
+def choice_tag_dict(key):
+    tag_dict = {"jobdam": key.tag_jobdam,
+                "jindo": key.tag_jindo,
+                "pilgi": key.tag_pilgi,
+                "site": key.site,
+                "achievement": key.achievement
+                }
+    return tag_dict
 ################################################################################
 
 def main(request):
@@ -156,7 +164,7 @@ def user_storage(request, user_id):
     
 def recommendation(request):
     key = CategoryLog.objects.last()
-    key2 = ReviewLog.objects.all()
+
     #문자열 부분 사이트에서 데이터 받아와야 함
     lecture_id_list1 = searching_id("subject", key.subject, "data_{}".format(key.site))
     lecture_id_list2 = searching_id("grade", key.grade, "data_{}".format(key.site))
@@ -169,7 +177,8 @@ def recommendation(request):
 
     reslist = max_filtering(len(dic4), dic4)
     rec_res_list = recommendation_res_title(reslist, "data_{}".format(key.site))
-    
+    #choice_tag_dict(key)
+
     # x 눌렀을 시 2개씩 계속 출력
     paginator = Paginator(rec_res_list, 2)
     page = request.GET.get('page')
