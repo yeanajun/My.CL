@@ -1,6 +1,18 @@
-import pymongo
-import bson
+from django.http import request
+from django.shortcuts import render, redirect
+from django.contrib import messages 
+from django.contrib.auth import authenticate, login
+from clients.forms import ReviewForm
+from clients.models import CategoryLog,ReviewLog
+from clients.forms import UserForm, CategoryLogForm, ReviewForm
+from pymongo import MongoClient
+
+from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
+
 import os, json
+from bson.objectid import ObjectId
+from pathlib import Path
 
 #mongoDB서버 연동
 def connect_lecture_db():
@@ -78,6 +90,16 @@ def max_filtering(dic_length, dic):
 
     return max_id_data
 
+#리뷰 commet 로딩
+def review_comment_load(idv):
+    key = ReviewLog.objects.all()
+    for k in key:
+        if key.lecture_id == idv:
+            return key.lec_comment
+        else:
+            pass
+
+
 #결과값 title을 list로 반환
 def recommendation_res_title(res_list, tag_name):
     rec_res_list = []
@@ -86,7 +108,9 @@ def recommendation_res_title(res_list, tag_name):
         for di in mycol.find():
             if di.get("_id") == i:
                 di.pop("_id")
-                rec_res_list.append(list(di.values()))
+                temp = list(di.values())
+                temp.append(review_comment_load(i))
+                rec_res_list.append(temp)
     return rec_res_list
 
 
