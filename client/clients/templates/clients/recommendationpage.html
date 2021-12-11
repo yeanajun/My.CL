@@ -49,16 +49,14 @@
 
 
 
-            {% if posts.has_previous %}
-            <a href="?page=1" id="first">맨 처음 결과</a>
-            <div id="pr_ne_but">
-                <a href="?page={{posts.previous_page_number}}" id="prev">이전 결과</a>
-                {% endif %}
-                {% if posts.has_next %}
-                <a href="?page={{posts.next_page_number}}" id="next">다음 결과</a>
-            </div>
-            {% endif %}
+        {% if posts.has_previous %}
+        <a href="?page=1" id="first">맨 처음 결과</a>
+        <a href="?page={{posts.previous_page_number}}" id="prev">이전 결과</a>
+        {% endif %}
+        {% if posts.has_next %}
+        <a href="?page={{posts.next_page_number}}" id="next">다음 결과</a>
 
+        {% endif %}
 
     </div>
 </body>
