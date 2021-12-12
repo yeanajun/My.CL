@@ -89,6 +89,7 @@ def review_comment_load(idv):
 def recommendation_res_title(res_list, tag_name):
     rec_res_list = []
     mycol = connect_lecture_db().get_collection(tag_name)
+
     for i in res_list:
         for di in mycol.find():
             if di.get("_id") == i:
